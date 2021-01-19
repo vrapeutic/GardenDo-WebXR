@@ -22,9 +22,7 @@ Reem/Hussien/Liza/Rich and the player will be watering plants today! , the playe
 
 - Once the game starts, the NPC raises their hand and waves. (waving hand animation).
 
-- Once the NPC starts waving, they also simultaneously start saying their introduction sentences. (Mouth motion animation simultaneously + “ازيك أنا حسين/ريم و دي جنينتي اللي فيها ورد سحري كتير”).
-
-- Then NPC say(“Let’s water a flower” ,"يلا نروى الورد" ).
+- The NPC welcomes the player and tells him to water the flower.
 
 - A footstep image appears in front of the first pot.
 
@@ -38,19 +36,19 @@ Reem/Hussien/Liza/Rich and the player will be watering plants today! , the playe
 
 - If the player stops looking at the flower or moves the bucket midway, the flower reverses its growth as described earlier.
 
-- Once the flower is done being watered,the NPC tells the player that they are done. (Mouth movement +“Wow you've planted a beautiful flower” , “واو أنت زرعت وردة جميلة جدا”).
+- Once the flower is done being watered .
 
 - The next flower to the left of the first flower is unlocked.
 
-- This sequence is repeated for the remaining flowers. -When finishing all the flower npc(Mouth movement animation +"wow you planted all these beautiful flowers thank you for helping me and make the garden look amazing" ,“واو انت زرعت كل الورود الجميلة دي، شكرا انك ساعدتني أخلي جنينتي أجمل”)
+- This sequence is repeated for the remaining flowers. -When finishing all the flower NPC thanks the player for helping.
 
-### Level two:
+### Level two (distractor included):
 
 - In the second level, distractions should appear around the garden to try to distract the player from sustaining their attention on the needed objects.
 
 - Distractions appear in the form of butterflies.
 
-### Level three:
+### Level three (distractor and interaction are included):
 
 - In the third level, the player needs to react to a certain stimulus while focusing on the particular object to perform a task.
 
