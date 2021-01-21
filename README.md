@@ -127,7 +127,7 @@ For local development and testing, modern browsers could be used, where mouse an
    
    
 -  __js__ directory
-   - Contains all logic and based on AFrame and JS code. 
+   - Contains all logic and based on AFrame and JS code. Check [here](https://github.com/vrapeutic/GardenDoWebXR/blob/main/Js/README.md) for more information
    
 # Contributions   
 
