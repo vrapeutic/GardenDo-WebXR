@@ -7,14 +7,10 @@
 s
 	* **js\cameraFrustum.js**: Responsible for calculating the time the player took since the fairy hit the target until the player opens it successfully
 
-	* **js\inpscounter.js**: Responsible for count times that the player doesn’t look at the fairy for more than 3 seconds. It is used in collecting data, check [Statistics](#Statistics) section for mre information
+	* **js\looking.js**: constains component that listen to and handle the event emitted by cameraFrustum.
 
-	* **js\items.js**: Registers an AFrame component which is responsible for choosing random items from the list to show up when the player opens the target and after 10 seconds it will disappear and also this component mange score
+	* **js\collision.js**: contains component that's responsible for knowing if the bucket is in right position to water the flower.
+	* **js\flowerWatered.js**: Contains the component that responsible for making the next flower ready for watering or finish the game if the player has already watered all flower.
 
-	* **js\movetotarget.js**: Contains the component which will add light to the target just hitted by the fairy and manage fairy movement when the distractor hits any target
+	* **js\npcWateringCourse.js**: contains component that control the NPC conversation during the watering course only.
 
-	* **js\menu.js**: Controls the game's levels, and whether a timer is used or not
-
-	* **js\stats.js**: Here we calculate our [Statistics](#Statistics)
-
-	* **js\selectenvironment.js**: Responsible for choosing the environment
