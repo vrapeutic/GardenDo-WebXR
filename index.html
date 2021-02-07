@@ -15,28 +15,25 @@
  
   <script src="handleTrigger.js" ></script>
   <script src="https://unpkg.com/aframe-aabb-collider-component@3.1.0/dist/aframe-aabb-collider-component.min.js"></script> 
-    <script src="butterflyDistractor.js"></script>
-    <script src="birdDistractor.js" ></script>
-  <script  src = "index.js"></script>
-  <script src="collision.js"></script>
-  <script src="looking.js"></script>
-  <script src="cameraFrustum.js"></script>
-  <script src="npcWateringCourse.js"></script>
-  <script src="flowerWatered.js"></script>
-  <script src="UISelection.js" ></script>
+    <script src="../Js/butterflyDistractor.js"></script>
+    <script src="../Js/birdDistractor.js" ></script>
+  <script  src = "../Js/index.js"></script>
+  <script src="../Js/collision.js"></script>
+  <script src="../Js/looking.js"></script>
+  <script src="../Js/cameraFrustum.js"></script>
+  <script src="../Js/npcWateringCourse.js"></script>
+  <script src="../Js/flowerWatered.js"></script>
+  <script src="../Js/UISelection.js" ></script>
 </head>
 <body>
     <script>      
   
     
   </script>
-    <a-scene physics >
+    <a-scene physics:"gravity: -9; restitution:9" >
       <a-assets>
-       <a-asset-item id="enviroment" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2FGardenDo%20Environment02.glb?v=1607866084134"></a-asset-item>
-         <a-asset-item id="bucket-1" src=""></a-asset-item>
-         <a-asset-item id="bucket-2" src=""></a-asset-item>
-         <a-asset-item id="bucket-3" src=""></a-asset-item>
-         <a-asset-item id="bucket-4" src=""></a-asset-item>
+       <a-asset-item id="enviroment" src="https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2FGardenDo_environment_v1.04.glb?v=1612445825687"></a-asset-item>
+        <a-asset-item id = "bucket" src="https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2FGardenDo_bucket_02.glb?v=1612698577545"></a-asset-item>
          <a-asset-item id="flower-1" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2Fflower%2001.glb?v=1607944805683"></a-asset-item>
          <a-asset-item id="flower-2" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2Fflower%2002.glb?v=1607946957244"></a-asset-item>
          <a-asset-item id="flower-3" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2Fflower%2003.glb?v=1607947151914"></a-asset-item>
@@ -85,7 +82,7 @@
       </a-camera>
       
    <a-sky></a-sky>
-      <a-entity light="intensity: 2.39; castShadow: true; decay: 2.03" position="-0.5 4.10918 1" data-aframe-default-light="" aframe-injected=""></a-entity>
+      
      <a-gltf-model src="#enviroment"></a-gltf-model>
      <a-gltf-model id="handlemdoel" src="#handle"  animation-mixer="timeScale = 0" position="1.251 0.269 0.496" handle></a-gltf-model>
     
@@ -155,9 +152,10 @@
       ------->
         <!-- grabbable etc. box -->
      
-  
+      
+  <a-box position ="0.8 0 0" scale="0.3 1 0.3" static-body></a-box> 
      <a-box  
-        dynamic-body
+        dynamic-body 
         hoverable 
         grabbable 
         stretchable 
@@ -166,11 +164,11 @@
         event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false" 
         event-set__dragon="_event: dragover-start; wireframe: true" 
         event-set__dragoff="_event: dragover-end; wireframe: false" 
-        id="tape_example"  class="tape"   color="blue"  position="0.8 1 -0.5"  scale="0.07 0.08 0.04"  material="visible: true"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
+        id="tape_example"  class="water-bucket"   color="blue"  position="0.8 0.6 0" rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="2" width="0.5"  material="visible: true"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
            <a-gltf-model      
-    src="https://cdn.glitch.com/7de25775-9f1e-45af-8694-b18f418e6c6a%2FGarden_prop_banana.glb?v=1607358243019"
+    src="#bucket"
 
-     position="-0.420 -0.209 0.312"   
+     position="0 1.1 0.4"   
                        scale="10 10 10"
         color="blue" 
          sphere-collider="radius:0.001">
@@ -178,11 +176,11 @@
     
   
       </a-gltf-model> 
-         <a-entity visible = "false" position = "-0.4 0.5 -0.1" id="particle" spe-particles="texture:#snowflake; color: #0000FF, #00FFFF, #FFFFFF; opacity: 1, 1, 0; size: 1, 1, 0; velocity: 0 4 0; acceleration: 0 6 0; velocitySpread: 2 0 2; particleCount: 20" rotation="0 0 180">
+        <a-entity visible="false" position="-0.22554 0.50662 -4.386" id="particle" spe-particles="texture: https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2Fsnowflake.png?v=1610618333793; color: #0000FF, #00FFFF, #FFFFFF; opacity: 1, 1, 0; size: 1, 1, 0; velocity: 0 4 0; acceleration: 0 6 0; velocitySpread: 2 0 2; particleCount: 20" rotation="0 0 180">
         </a-entity>
       </a-box>
       
-      <a-box position ="0.8 0 -0.5" scale="0.3 1 0.3" static-body></a-box>
+    
       
       <!-------- old hands
    <a-entity oculus-touch-controls="hand: left" >
@@ -195,10 +193,10 @@
       
  <a-plane   position="0 0 0" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
      
-   <a-box id="sensor1" depth="0.25" width = "0.25" height = "1.2" position = "-0.95925 0.1 -0.5" aabb-collider="objects: .tape;" visible="false" start-collision="flower:flower1;canCollide:true"  class = "clickable" hoverable data-aabb-collider-dynamic></a-box>   
-   <a-box id="sensor2" depth="0.25" width = "0.25" height = "1.2" position = "-0.95925 0.1 -0.2" aabb-collider="objects: .tape;" visible="false" start-collision="flower:flower2;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>      
-   <a-box id="sensor3" depth="0.25" width = "0.25" height = "1.2" position = "-0.95925 0.1  0.1" aabb-collider="objects: .tape;" visible="false" start-collision="flower:flower3;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>          
-   <a-box id="sensor4" depth="0.25" width = "0.25" height = "1.2" position = "-0.95925 0.1 0.4"  aabb-collider="objects: .tape;" visible="false" start-collision="flower:flower4;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>  
+   <a-box id="sensor1" depth="0.25" width = "0.25" height = "1.2" position = "-0.95925 0.1 -0.5" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower1;canCollide:true"  class = "clickable" hoverable data-aabb-collider-dynamic></a-box>   
+   <a-box id="sensor2" depth="0.25" width = "0.25" height = "1.2" position = "-0.95925 0.1 -0.2" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower2;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>      
+   <a-box id="sensor3" depth="0.25" width = "0.25" height = "1.2" position = "-0.95925 0.1  0.1" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower3;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>          
+   <a-box id="sensor4" depth="0.25" width = "0.25" height = "1.2" position = "-0.95925 0.1 0.4"  aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower4;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>  
       
       <a-gltf-model id="butterflymodel" src="#butterfly" position = "0 0 -1" animation-mixer butterfly></a-gltf-model>
      <a-gltf-model id="flower1" src="#flower-4" position="-0.95925 0.03255 -0.5" animation-mixer="timeScale: 0" flower-finished="" player-looking="flower:flower1;canWater:true" ></a-gltf-model>
