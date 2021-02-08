@@ -1,6 +1,6 @@
 # GardenDo - WebXR Version | [Try it out!](https://gardendo-webxr.web.app) 
 
-[![Contributor Covenant](https://gardendo-webxr.web.app/)](code_of_conduct.md)
+[![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
 A plant watering exercise that is designed to address and measure the various variables of attention
 
