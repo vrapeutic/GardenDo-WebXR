@@ -76,19 +76,15 @@ Reem/Hussien/Liza/Rich and the player will be watering plants today! , the playe
    
 #### 1 | Install and run the project locally using NPM
 ---
-> `node v15.5.0 npm v7.3.0`
+> node v15.5.0
+> npm v7.3.0
 
-1. Clone the repository git clone https://github.com/vrapeutic/GardenDoWebVR.git.
-
-2. Go to the repo's directory cd GardenDoWebVR.
-
-3. Run npm install to install the required dependecies.
-
-4. Run npm run dev command to start the WebXR app in your local environment.
-
-5. Go to the localhost URL specified in the terminal.
-
-6. Congrats! You've got your local development environment ready!
+ 1. Clone the repository `git clone https://github.com/vrapeutic/Archeeko-WebXR.git`
+ 2. Go to the repo's directory `cd Archeeko-WebXR`
+ 3. Run `npm install` to install the required dependecies
+ 4. Run `npm run dev` command to start the WebXR app in your local envirotnment
+ 5. Go to the localhost URL specified in the terminal
+ 6. Congrats! You've got your local development environment ready!
 
 #### 2 | Install and run the project locally using Docker
 ---
