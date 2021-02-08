@@ -13,17 +13,19 @@
     <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>   
    <script src="https://unpkg.com/aframe-spe-particles-component@^1.0.4/dist/aframe-spe-particles-component.min.js"></script>
  
-  <script src="handleTrigger.js" ></script>
+  
   <script src="https://unpkg.com/aframe-aabb-collider-component@3.1.0/dist/aframe-aabb-collider-component.min.js"></script> 
-    <script src="../Js/butterflyDistractor.js"></script>
-    <script src="../Js/birdDistractor.js" ></script>
-  <script  src = "../Js/index.js"></script>
-  <script src="../Js/collision.js"></script>
-  <script src="../Js/looking.js"></script>
-  <script src="../Js/cameraFrustum.js"></script>
-  <script src="../Js/npcWateringCourse.js"></script>
-  <script src="../Js/flowerWatered.js"></script>
-  <script src="../Js/UISelection.js" ></script>
+  
+  
+    <script src="Js/butterflyDistractor.js"></script>
+    <script src="Js/birdDistractor.js" ></script>
+  <script  src = "index.js"></script>
+  <script src="Js/collision.js"></script>
+  <script src="Js/looking.js"></script>
+  <script src="Js/cameraFrustum.js"></script>
+  <script src="Js/npcWateringCourse.js"></script>
+  <script src="Js/flowerWatered.js"></script>
+  
 </head>
 <body>
     <script>      
@@ -164,7 +166,7 @@
         event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false" 
         event-set__dragon="_event: dragover-start; wireframe: true" 
         event-set__dragoff="_event: dragover-end; wireframe: false" 
-        id="tape_example"  class="water-bucket"   color="blue"  position="0.8 0.6 0" rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="2" width="0.5"  material="visible: true"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
+        id="tape_example"  class="water-bucket"   color="blue"  position="0.8 0.6 0" rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="2" width="0.5"  material="visible: false"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
            <a-gltf-model      
     src="#bucket"
 
