@@ -1,0 +1,23 @@
+{
+  "name": "gardendowebxr",
+  "version": "0.0.1",
+  "description": "A plant watering exercise that is designed to address and measure the various variables of attention",
+  "main": "index.html",
+  "scripts": {
+    "dev":"live-server --no-browser --port=3000",
+    "test": "echo \"testing GardenDo webXR \""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vrapeutic/GardenDoWebXR.git"
+  },
+  "author": "",
+  "license": "GPL-3.0",
+  "bugs": {
+    "url": "https://github.com/vrapeutic/GardenDoWebXR/issues"
+  },
+  "homepage": "https://github.com/vrapeutic/GardenDoWebXR#readme",
+  "dependencies": {
+    "live-server": "^1.2.1"
+  }
+}
