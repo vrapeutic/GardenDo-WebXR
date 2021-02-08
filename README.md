@@ -131,4 +131,6 @@ For local development and testing, modern browsers could be used, where mouse an
    
 # Contributions   
 
- First off, thanks for taking the time to contribute! You can check out our contribution guidelines from this link. Please note that this project is released with a Contributor Code of Conduct, which can be found here. By participating in this project you agree to abide by its terms.
+First off, thanks for taking the time to contribute! You can check out our contribution guidelines from this [link](https://github.com/vrapeutic/GardenDoWebXR/blob/main/CONTRIBUTING.md).
+
+Please note that this project is released with a Contributor Code of Conduct, which can be found [here](https://www.contributor-covenant.org/version/2/0/code_of_conduct/). By participating in this project you agree to abide by its terms.
