@@ -2,11 +2,11 @@
 
 [![Contributor Covenant](https://img.shields.io/badge/Contributor%20Covenant-v2.0%20adopted-ff69b4.svg)](code_of_conduct.md)
 
-A plant watering exercise that is designed to address and measure the various variables of attention
+
 
 ### Description
 
-That's this file, where you can tell people what your cool website does and how you built it.
+A plant watering exercise that is designed to address and measure the various variables of attention.
 
 ### Story
 
