@@ -79,7 +79,7 @@ Reem/Hussien/Liza/Rich and the player will be watering plants today! , the playe
 > node v15.5.0
 > npm v7.3.0
 
- 1. Clone the repository `git clone https://github.com/vrapeutic/Archeeko-WebXR.git`
+ 1. Clone the repository `git clone https://github.com/vrapeutic/GardenDoWebXR.git
  2. Go to the repo's directory `cd Archeeko-WebXR`
  3. Run `npm install` to install the required dependecies
  4. Run `npm run dev` command to start the WebXR app in your local envirotnment
