@@ -1,241 +1,33 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    
-    <title>GardenDo</title>
-    
-        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
-       <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
-       <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-         <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
-    <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
-    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>   
-   <script src="https://unpkg.com/aframe-spe-particles-component@^1.0.4/dist/aframe-spe-particles-component.min.js"></script>
- 
-  
-  <script src="https://unpkg.com/aframe-aabb-collider-component@3.1.0/dist/aframe-aabb-collider-component.min.js"></script> 
-  
-  
-    <script src="Js/butterflyDistractor.js"></script>
-    <script src="Js/birdDistractor.js" ></script>
-  <script  src = "index.js"></script>
-  <script src="Js/collision.js"></script>
-  <script src="Js/looking.js"></script>
-  <script src="Js/cameraFrustum.js"></script>
-  <script src="Js/npcWateringCourse.js"></script>
-  <script src="Js/flowerWatered.js"></script>
-  
-</head>
+<html>
+    <head>
+        <script src="Js/menu.js" > </script>
+    </head>
 <body>
-    <script>      
+  <h>Select langauge</h>
+  <br> 
+    <button class ="button" onclick="set_language('A')" >Arabic </button>
+    <button class ="button" onclick="set_language('E')">English </button>
+  <br> <br> 
+  <h>Select level</h>
+  <br>
+  <button class ="button" onclick="set_level(1)" >Level 1</button>
+  <button class ="button" onclick="set_level(2)" >Level 2</button>
+  <button class ="button" onclick="set_level(3)">Level 3</button>
+ <br> <br>
+        <h>Select flower growth time</h>
+  <br>
+  <button class ="button" onclick="set_growth_time(1)" >10</button>
+  <button class ="button" onclick="set_growth_time(1.5)" >7</button>
+  <button class ="button" onclick="set_growth_time(2)" >4</button>
+      <br> <br>
+  <h>Select npc</h>
+  <br>
+  <button class ="button" onclick="set_npc('male')">Male</button>
+  <button class ="button" onclick="set_npc('female')" >Female</button>
+  <br> <br>
+  <button class ="button" onclick="start_game()" >Start</button>
   
-    
-  </script>
-    <a-scene physics:"gravity: -9; restitution:9" >
-      <a-assets>
-       <a-asset-item id="enviroment" src="https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2FGardenDo_environment_v1.04.glb?v=1612445825687"></a-asset-item>
-        <a-asset-item id = "bucket" src="https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2FGardenDo_bucket_02.glb?v=1612698577545"></a-asset-item>
-         <a-asset-item id="flower-1" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2Fflower%2001.glb?v=1607944805683"></a-asset-item>
-         <a-asset-item id="flower-2" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2Fflower%2002.glb?v=1607946957244"></a-asset-item>
-         <a-asset-item id="flower-3" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2Fflower%2003.glb?v=1607947151914"></a-asset-item>
-         <a-asset-item id="flower-4" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2Fflower%2004.glb?v=1607947310490"></a-asset-item>
-         <a-asset-item id="handle" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2Fhandle.glb?v=1607867598007" ></a-asset-item>
-        <a-asset-item id = "butterfly" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2FButterfly.glb?v=1607868452056"></a-asset-item>
-        <a-asset-item id = "bird" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2Fbird.glb?v=1607943249045"></a-asset-item>
-        <a-asset-itme id = "welcome-soundEL" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F1lisa%20Hi%20How%20are%20you.wav?v=1607420275704"></a-asset-itme>
-        <a-asset-itme id = "welcome-soundAH" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F%D8%A7%D8%B2%D9%8A%D9%83%20%D8%A7%D9%86%D8%A7%20%D8%AD%D8%B3%D9%8A%D9%86.mp3?v=1609673652058"></a-asset-itme>
-        <a-asset-itme id = "welcome-soundSR" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F01kayfak%20ana%20reem1.wav?v=1609761558626"></a-asset-itme>
-        <a-asset-itme id = "welcome-soundERi" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F1rich%20Hi%2CHow%20are%20youW.wav?v=1609760263318"></a-asset-itme>
-        
-        <a-asset-itme id = "goodjob-soundEL" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F10lisa%20Good%20job.wav?v=1607421009790"></a-asset-itme>
-        <a-asset-itme id = "goodjob-soundAH" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F%D8%B4%D8%A7%D8%B7%D8%B1(%D8%AD%D8%B3%D9%8A%D9%86).mp3?v=1609754182031"></a-asset-itme>
-        <a-asset-itme id = "goodjob-soundSR" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F11shater%20enta%20zara3t%20warda.wav?v=1609761568330"></a-asset-itme>
-        <a-asset-itme id = "goodjob-soundERi" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F10rich%20Good%20jobW.wav?v=1609760280472"></a-asset-itme>
-        
-        <a-asset-itme id = "finisihing-soundEL" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F13lisa%20WOW%20you%20have%20planted%20all%20of%20these%20beautiful%20flowers.wav?v=1608123699287"></a-asset-itme>
-         <a-asset-itme id = "finisihing-soundAH" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F%D8%A7%D9%86%D8%AA%20%D8%B2%D8%B1%D8%B9%D8%AA%20%D9%83%D9%84%20%D8%A7%D9%84%D9%88%D8%B1%D9%88%D8%AF(%D8%AD%D8%B3%D9%8A%D9%86).mp3?v=1609754179086"></a-asset-itme>
-        <a-asset-itme id = "finisihing-soundSR" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F14wow%20enta%20zara3t%20kol%20el%20ward.wav?v=1609761636673"></a-asset-itme>
-        <a-asset-itme id = "finisihing-soundERi" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F13rich%20%20WOW%20you%20have%20planted%20all%20of%20these%20beautiful%20flowerW.wav?v=1609760291375"></a-asset-itme>
-        
-        <a-asset-itme id = "blank-sound" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F3%20sec%20silence.wav?v=1608717806555"></a-asset-itme>
-        <a-asset-itme id="letwater-soundEL" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F8lisa%20Lets%20water%20the%20flowers.wav?v=1609151427819"></a-asset-itme>
-        <a-asset-itme id="letwater-soundAH" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F%D9%8A%D9%84%D8%A7%20%D9%86%D8%B3%D9%82%D9%89%20%D8%A7%D9%84%D9%88%D8%B1%D8%AF%20(%D8%AD%D8%B3%D9%8A%D9%86).mp3?v=1609758467866"></a-asset-itme>
-        <a-asset-itme id="letwater-soundSR" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F09yala%20nes2y%20el%20warda.wav?v=1609761562985"></a-asset-itme>
-        <a-asset-itme id="letwater-soundERi" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2F8rich%20Let_s%20water%20the%20flowersW.wav?v=1609760272731"></a-asset-itme>
-        <a-asset-itme id="snowflake" src="https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2Fsnowflake.png?v=1610618333793"></a-asset-itme>
-      </a-assets>
-    <!--  <a-entity light="intensity: 4; castShadow: true; angle: 120" position="-0.5 1.89562 10.20745" data-aframe-default-light="" aframe-injected=""></a-entity> -->
-      <!--- superhands---------------------------------------->
-      <a-entity 
- progressive-controls="objects: .tape,#tape_example"
-       ></a-entity>
-      <!----------------------------------------------------------------------->
-      
-      <a-camera id="cam" camera-head>
-         <!---
-           <a-gui-cursor id="cursor"
-						  raycaster="objects: [gui-interactable]"
-						  fuse="true" fuse-timeout="5000"
-						  design="ring"
-				>
-				</a-gui-cursor> 
-        --->
-      </a-camera>
-      
-   <a-sky></a-sky>
-      
-     <a-gltf-model src="#enviroment"></a-gltf-model>
-     <a-gltf-model id="handlemdoel" src="#handle"  animation-mixer="timeScale = 0" position="1.251 0.269 0.496" handle></a-gltf-model>
-    
-      
-      
-      
-       <!-- super hands controls -->
-         <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"  aabb-collider="objects: .tap;" class = "hand" ></a-entity>
-      <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" aabb-collider="objects: .tap;" class = "hand"></a-entity>
-      
- <!---     
-    <a-gui-button select-langauge="langauge:E"
-		width="2" height="0.5"
-		 key-code="32"
-		value="select English"
-		font-family="Arial"
-		margin="0 0 0.05 0"
-    position = "1 1 -2"
-                  class = "langUI"
-	>
-	</a-gui-button>
-      
-      <a-gui-button select-langauge="langauge:A"
-		width="2" height="0.5"
-		 key-code="32"
-		value="select Arabic"
-		font-family="Arial"
-		margin="0 0 0.05 0"
-    position = "-1 1 -2"
-                    class ="langUI"
-	>
-	</a-gui-button>   
-      
-      
-      
-         <a-gui-button 
-      select-npc="npc:male"
-		width="2" height="0.5"
-		 key-code="32"
-		value="select Male"
-		font-family="Arial"
-		margin="0 0 0.05 0"
-    position = "-1 50 -2.1"
-    visible="false"                   
-                    class ="npcUI"
-	>
-	</a-gui-button>   
-      
-      
-      
-      
-      
-      
-               <a-gui-button 
-       select-npc="npc:female"
-		width="2" height="0.5"
-		 key-code="32"
-		value="select Female"
-		font-family="Arial"
-		margin="0 0 0.05 0"
-    position = "1 50 -2.1"
-    visible="false"                         
-                    class ="npcUI"
-	>
-	</a-gui-button>   
-      
-      ------->
-        <!-- grabbable etc. box -->
-     
-      
-  <a-box position ="0.8 0 0" scale="0.3 1 0.3" static-body></a-box> 
-     <a-box  
-        dynamic-body 
-        hoverable 
-        grabbable 
-        stretchable 
-        draggable   
-        event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true" 
-        event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false" 
-        event-set__dragon="_event: dragover-start; wireframe: true" 
-        event-set__dragoff="_event: dragover-end; wireframe: false" 
-        id="tape_example"  class="water-bucket"   color="blue"  position="0.8 0.6 0" rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="2" width="0.5"  material="visible: false"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
-           <a-gltf-model      
-    src="#bucket"
 
-     position="0 1.1 0.4"   
-                       scale="10 10 10"
-        color="blue" 
-         sphere-collider="radius:0.001">
-  
-    
-  
-      </a-gltf-model> 
-        <a-entity visible="false" position="-0.22554 0.50662 -4.386" id="particle" spe-particles="texture: https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2Fsnowflake.png?v=1610618333793; color: #0000FF, #00FFFF, #FFFFFF; opacity: 1, 1, 0; size: 1, 1, 0; velocity: 0 4 0; acceleration: 0 6 0; velocitySpread: 2 0 2; particleCount: 20" rotation="0 0 180">
-        </a-entity>
-      </a-box>
-      
-    
-      
-      <!-------- old hands
-   <a-entity oculus-touch-controls="hand: left" >
-      <a-box id="left" color="yellow"  depth="0.1" width = "0.1" height = "0.1"  aabb-collider="objects: a-sphere,a-box"></a-box>
-   </a-entity>
-   <a-entity id="right" oculus-touch-controls="hand: right" >
-    <a-box  color="red" depth="0.1" width = "0.1" height = "0.1" aabb-collider="objects: a-sphere,a-box"></a-box>  
-   </a-entity>
-     -------------------------------------------------------------------------------------------------------------------------------->
-      
- <a-plane   position="0 0 0" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
-     
-   <a-box id="sensor1" depth="0.25" width = "0.25" height = "1.2" position = "-0.95925 0.1 -0.5" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower1;canCollide:true"  class = "clickable" hoverable data-aabb-collider-dynamic></a-box>   
-   <a-box id="sensor2" depth="0.25" width = "0.25" height = "1.2" position = "-0.95925 0.1 -0.2" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower2;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>      
-   <a-box id="sensor3" depth="0.25" width = "0.25" height = "1.2" position = "-0.95925 0.1  0.1" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower3;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>          
-   <a-box id="sensor4" depth="0.25" width = "0.25" height = "1.2" position = "-0.95925 0.1 0.4"  aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower4;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>  
-      
-      <a-gltf-model id="butterflymodel" src="#butterfly" position = "0 0 -1" animation-mixer butterfly></a-gltf-model>
-     <a-gltf-model id="flower1" src="#flower-4" position="-0.95925 0.03255 -0.5" animation-mixer="timeScale: 0" flower-finished="" player-looking="flower:flower1;canWater:true" ></a-gltf-model>
-       <a-gltf-model id="flower2" src="#flower-2" position = "-0.95925 0.03255 -0.2" animation-mixer="timeScale :0"  player-looking="flower:flower2;canWater:false"></a-gltf-model>
-        <a-gltf-model id="flower3" src="#flower-3" position = "-0.95925 0.03255 0.1" animation-mixer="timeScale :0"  player-looking="flower:flower3;canWater:false"></a-gltf-model>
-        <a-gltf-model id="flower4" src="#flower-4" position = "-0.95925 0.03255 0.4" animation-mixer="timeScale :0"  player-looking="flower:flower4;canWater:false"></a-gltf-model>
-      
-      
-       <a-gltf-model bird id="myDs" src="#bird" aabb-collider="objects: .hand" scale="0.015 0.015 0.015" animation-mixer position="-1.2 1 0.06" data-aabb-collider-dynamic></a-gltf-model>   
-      <!-----------bird targets-->
-      <a-box scale ="0.2 0.2 0.2" class = "targets" position="-1.1 0.2 -0.5"  visible="false"></a-box>
-      <a-box scale ="0.2 0.2 0.2" class = "targets" position = "-1.1 0.2 -0.2" visible="false"></a-box>
-      <a-box scale ="0.2 0.2 0.2" class = "targets" position = "-1.1 0.2 0.1"  visible="false"></a-box>
-      <a-box scale ="0.2 0.2 0.2" class = "targets" position = "-1.1 0.2 0.4" visible="false"></a-box>
-         <a-box id="base" scale ="0.2 0.2 0.2"  position = "-1.2 1 0.06"  material="color:yellow" visible="false" ></a-box>
-    
-      <!----------butterfly target path-->
-       <a-box id="box"  visible="false" depth="0.4" width = "0.4" height = "0.4" position = "0 0.1 -0.1"  aabb-collider="objects: a-sphere,a-box" class = "bTarget"
-          
-          ></a-box>   
-            <a-box id="box1" visible="false" depth="0.4" width = "0.4" height = "0.4" position = "1 0.1 1"  aabb-collider="objects: a-sphere,a-box" class = "bTarget"
-          
-          ></a-box> 
-       <a-box id="box2" visible="false" depth="0.4" width = "0.4" height = "0.4" position = "1 0.1 -1"  aabb-collider="objects: a-sphere,a-box"  class = "bTarget"
-          
-          ></a-box> 
-        <a-box id="box3" visible="false" depth="0.4" width = "0.4" height = "0.4" position = "-1 0.1 -1"  aabb-collider="objects: a-sphere,a-box" class = "bTarget"
-          
-          ></a-box>  
-       <a-box id="box4" visible="false" depth="0.4" width = "0.4" height = "0.4" position = "-1 0.1 1"  aabb-collider="objects: a-sphere,a-box"  class = "bTarget"
-          
-          ></a-box>  
-      
-   
-      
-     <a-gltf-model visible = "false" id="npc" scale="0.005 0.005 0.005" gltf-model="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2FalienWithout.gltf?v=1607419528525" sound="autoplay: true;" sound-handler  position="-0.5 0 -1"></a-gltf-model>
-       
-<!--<a-gltf-model id="trex" src="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2FTRex.glb?v=1607338635800" scale="0.2 0.2 0.2" position="0.5 0.5 -1" gltf-model="https://cdn.glitch.com/5133a850-d5e7-4a97-91c0-7fdb4a51d65e%2FTRex.glb?v=1607338635800" animation-mixer="timeScale:0;loop:repeat" flower-finished ></a-gltf-model>  -->  </a-scene>
 </body>
 </html>
