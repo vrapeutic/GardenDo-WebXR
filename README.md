@@ -106,7 +106,7 @@ Reem/Hussien/Liza/Rich and the player will be watering plants today! , the playe
 
 ### Preferred platform 
 ---
-If you are going to be using a VR Headset, then we recommend trying the app (either the [hosted version](https://gardendodemo.glitch.me/) or on [Glitch](https://glitch.com/)) on the [Oculus Browser](https://developer.oculus.com/webxr/).
+If you are going to be using a VR Headset, then we recommend trying the app (either the [hosted version](https://gardendo-webxr.web.app) or on [Glitch](https://glitch.com/)) on the [Oculus Browser](https://developer.oculus.com/webxr/).
 
 
 
