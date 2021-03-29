@@ -1,14 +1,17 @@
-    AFRAME.registerComponent('flower-finished', {
+AFRAME.registerComponent('flower-finished', {
   init: function () {
     console.log('new flower');
     let el = this.el;
     let npc = document.getElementById('npc')
     let sensor_el = document.getElementById('sensor'+window.flowerIndex);
     let flower_el = document.getElementById('flower'+window.flowerIndex);
+    let response_el = document.getElementById('responsTime');
     let WVFX = document.getElementById('particle');
     let nextSensor ;
     let nextFlower;
     let bird = document.getElementById('myDs')
+    let stats_el = document.getElementById('stats')
+      let timTaken_el =document.getElementById('timeTaken');
     el.addEventListener('animation-loop',function(){
       console.log('loop finisihed');
       if(window.isReversing)
@@ -27,8 +30,8 @@
                     console.log("good job");
                     el.removeAttribute('animation-mixer');
                     el.removeAttribute('flower-finished');
-                    bird.emit('next');    
-              
+                    bird.emit('next');                      
+                   response_el.emit('calculate');        
                     npc.setAttribute('sound','src','#goodjob-sound'+window.language+window.npc);
                     npc.setAttribute('sound','playSound');
                     npc.setAttribute('sound-handler','isGoodJob','true');    
@@ -58,6 +61,7 @@
               }
               else 
               {
+                 timTaken_el.emit('stop');
                   WVFX.setAttribute('visible','false');
                   console.log('all flower finsihed');
                   npc.setAttribute('sound','src','#finisihing-sound'+window.language+window.npc);
@@ -69,6 +73,7 @@
                   sensor_el.setAttribute('start-collision','canCollide','false');
                   window.isPlayerLooking = false;
                   window.isBucketWatering = false;
+                  stats_el.emit('gameEnded');
                 }
              
             }          

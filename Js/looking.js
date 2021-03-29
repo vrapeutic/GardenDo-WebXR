@@ -3,6 +3,8 @@ AFRAME.registerComponent('player-looking', {
   event: {type: 'string', default: ''},
   canWater: {type: 'boolean', default:false},
   flower: {type:'string',default:'flower1'},
+    interuption:{type:'number',defult:0},
+   
 },
 
   init: function () {
@@ -10,10 +12,14 @@ AFRAME.registerComponent('player-looking', {
     
      let el = this.el;
     let sensor = document.getElementById('sensor'+window.flowerIndex);
+     let response_el = document.getElementById('responsTime');
+    let AAS_el = document.getElementById('AAS');
      let data = this.data;
      let floweranim = document.getElementById(data.flower) ;
     let WVFX = document.getElementById('particle');
     
+     let limitedInteruption_el = document.getElementById("limited-interuption");
+    let canInterupt = false;
     //when player is looking
     this.eventHandlerFn = function (event){
     
@@ -27,8 +33,12 @@ AFRAME.registerComponent('player-looking', {
       if(window.isBucketWatering)
         {
           window.isReversing = false;
-          
+          canInterupt = true;
+          response_el.emit("stop")
+          //activate AAS calculation here
           floweranim.setAttribute('animation-mixer','timeScale','1');
+           limitedInteruption_el.emit('canInterupt');
+          AAS_el.emit('calculate');
           WVFX.setAttribute('visible','true');
           sensor.setAttribute('material','color','black');
         }        
@@ -46,7 +56,16 @@ AFRAME.registerComponent('player-looking', {
       
        if(data.canWater)
          {
+            if(canInterupt)
+              {
+                limitedInteruption_el.emit('interupt');
+              }
+             
+             
            window.isPlayerLooking = false;
+           //deactivate AAs calculation here
+          AAS_el.emit('stop');
+           
            floweranim.setAttribute('animation-mixer','timeScale','-1');
            WVFX.setAttribute('visible','false');
            window.isReversing = true;
@@ -65,7 +84,7 @@ AFRAME.registerComponent('player-looking', {
   },
   remove: function () {
     let el = this.el;
-  let  sensor = document.getElementById('sensor'+window.flowerIndex);
+    let  sensor = document.getElementById('sensor'+window.flowerIndex);
     el.removeEventListener('looking',this.eventHandlerFn );
      window.isPlayerLooking = false;
     console.log('player looking removed');
