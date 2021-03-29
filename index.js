@@ -1,3 +1,5 @@
+
+
 window.language = 'E';
 window.npc = 'Ri';
 window.isFullcourse = false;
@@ -23,3 +25,18 @@ window.flowerIndex = 1;
       window.isFinished = false;
       window.isReversing= false;
       window.isRevesred = false;
+//////////////////////////////////////////////////////////////////////////////////////////////
+window.responseTime = 0;
+window.avgResponseTime;
+window.averageResponseTime = 0;
+window.𝑇𝐴𝑆 = 54;
+window.AAS = 0;
+window.TaR ; //Targets Ratios = 𝑇𝑎𝑠𝑘𝑠 𝑤𝑖𝑡ℎ 𝑙𝑖𝑚𝑖𝑡𝑒𝑑 𝑖𝑛𝑡𝑒𝑟𝑟𝑢𝑝𝑡𝑖𝑜𝑛𝑠𝑇𝑜𝑡𝑎𝑙 /𝑁𝑢𝑚𝑏𝑒𝑟 𝑜𝑓 𝑇𝑎𝑠𝑘𝑠
+window.numberOfTasks = 4;
+window.timeTaken = 0;
+window.typicalTime = 120;
+window.TiR; // timeTaken/typicalTime
+window.impulsivityScore = 0;
+window.omissionScore = 0;
+////////////////////////////////////////
+window.tasksLimitedInterupted = 4;
