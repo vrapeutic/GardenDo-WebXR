@@ -8,7 +8,7 @@ AFRAME.registerComponent('camera-head', {
         let el = this.el;
        
        let data = this.data;
-    data.canSee = true;
+   // data.canSee = true;
       // let canReverse = true;
 if(data.canSee)
   {
