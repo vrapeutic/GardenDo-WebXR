@@ -40,3 +40,11 @@ window.impulsivityScore = 0;
 window.omissionScore = 0;
 ////////////////////////////////////////
 window.tasksLimitedInterupted = 4;
+
+
+var IAM = null;
+var peer = null;
+var lastPeerId = null;
+var peerId = null;
+var conn = null;
+var gameStarted = false;
