@@ -1,7 +1,7 @@
 AFRAME.registerComponent('camera-head', {
   schema: {
     event: { type: 'string', default: '' },
-    canSee: { type: 'boolean', default: true }
+    canSee: { type: 'boolean', default: true },
   },
 
   update: function(oldData) {
@@ -29,6 +29,9 @@ AFRAME.registerComponent('camera-head', {
           var position = this.el.object3D.position;
           var rotation = this.el.object3D.rotation;
 
+          console.log('position', position)
+          console.log('rotation', rotation)
+
           // var position = this.el.object3D.getWorldPosition(new THREE.Vector3());
           // var quaternion = this.el.object3D.getWorldQuaternion(new THREE.Quaternion());
 
@@ -39,7 +42,18 @@ AFRAME.registerComponent('camera-head', {
           }
           conn.send(JSON.stringify(objectInfo));
           // console.log(IAM, position, rotation)
+        } else if ( IAM == 'doctor' && conn && gameStarted ) {
+          // console.log(this.el.sceneEl.camera)
         }
+
+        // let cameraDiv = document.querySelector('#cam');
+
+        // if ( IAM == 'child' && conn && gameStarted ) {
+        //   cameraDiv.setAttribute('wasd-controls', 'enabled', true)
+        // } else if ( IAM == 'doctor' && conn && gameStarted ) {
+        //   cameraDiv.setAttribute('wasd-controls', 'enabled', false)
+        //   console.log(cameraDiv)
+        // }
 
         if (frustum.containsPoint(pos)) {
           if (!window.isLooking) {
