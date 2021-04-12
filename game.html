@@ -28,6 +28,8 @@
   <script src="Js/levelManager.js"></script>
   <script src="Js/StatisticsCalculation.js"></script>
   <script src="Js/TimeCalculation.js" ></script>
+  <script src="Js/el_Sync.js"></script>
+  <script src="js/FlowerSync.js" ></script>
   
   
 </head>
@@ -98,7 +100,7 @@
      <a-gltf-model id="handlemdoel" src="#handle"  animation-mixer="timeScale = 0" position="1.251 0.269 0.496" handle></a-gltf-model>
       <a-entity level-manager></a-entity>
       
-    
+    <a-entity id="flower-sync" flower-sync ></a-entity>
       <a-entity id="responsTime" calculate-response ></a-entity>
       <a-entity id = "stats" calculate-stats></a-entity>
         <a-entity id="timeTaken"  calculate-time-taken ></a-entity>
@@ -106,8 +108,8 @@
       <a-entity id="limited-interuption" calculate-limited-interuption ></a-entity>
       
        <!-- super hands controls -->
-         <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"  aabb-collider="objects: .tap;" class = "hand" ></a-entity>
-      <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" aabb-collider="objects: .tap;" class = "hand"></a-entity>
+         <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"  aabb-collider="objects: .tap;" class = "hand" el-sync ></a-entity>
+      <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" aabb-collider="objects: .tap;" class = "hand" el-sync></a-entity>
       
       <!------texts to test stats----->
      <a-entity id="resonseText" text="value: responseText" position="-2 1.5 -1" rotation="0 90 0"></a-entity>
@@ -178,7 +180,7 @@
      
       
   <a-box position ="0.8 0 0" scale="0.3 1 0.3" static-body ></a-box> 
-     <a-box  
+     <a-box el-sync
         dynamic-body 
         hoverable 
         grabbable 
