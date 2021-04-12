@@ -199,6 +199,22 @@ function initPeerJS(role, drIDElement) {
   });
 }
 
+function objectToPos(posObject) {
+  return posObject.x + " " + posObject.y + " " + posObject.z;
+}
+
+document.addEventListener("keydown", function(e){
+  if ( e.key == 'e' ) {
+    var camRig = document.querySelector("#camRig");
+
+    console.log(camRig.getAttribute('position'))
+    camRig.setAttribute('position', "3 3 3")
+    console.log(camRig.getAttribute('position'))
+
+    console.log(camRig)
+  }
+});
+
 function ready() {
   console.log('I am ready');
 
@@ -210,22 +226,33 @@ function ready() {
 
   conn.on('data', function (data) {
     var incomingData = JSON.parse(data)
-    console.log(IAM, 'got data', incomingData);
+    // console.log(IAM, 'got data', incomingData);
 
     if ( incomingData.object3D == 'camera' ) {
-      var camObj = document.getElementById('cam');
-      var obj3D = camObj.object3D//.children[0];
+      var camRig = document.querySelector("#camRig");
 
-      console.log(obj3D)
+      var camPos = objectToPos(camRig.getAttribute('position'));
+      var newPos = objectToPos(incomingData.position);
+      // newPos = (camRig.getAttribute('position').x + 1) + " " + (camRig.getAttribute('position').y + 1) + " " + (camRig.getAttribute('position').z + 1)
 
-      obj3D.position.set(incomingData.position);
-      obj3D.rotation.set(incomingData.rotation);
+      var camRot = objectToPos(camRig.getAttribute('rotation'));
+      var newRot = objectToPos(incomingData.rotation);
+
+      // console.log('FROM', camPos)
+      // console.log('TO', newPos)
+
+      // camRig.setAttribute('animation', `property: position; from: ${camPos}; to: ${newPos}; dur: 700`)
+      // camRig.setAttribute('animation', `property: rotation; from: ${camRot}; to: ${newRot}; dur: 700;`)
+
+      // // console.log('old')
+      // console.log(camRig.getAttribute('position'))
+      // // console.log(camRig.getAttribute('rotation'))
+      camRig.setAttribute('position', newPos)
+      camRig.setAttribute('rotation', newRot)
+      // console.log('new')
+      // console.log(camRig.getAttribute('position'))
+      // // console.log(camRig.getAttribute('rotation'))
     }
-
-    // console.log(incomingData.funcName)
-    // console.log(incomingData.params)
-
-    // executeFunctionByName(incomingData.funcName, window, incomingData.params)
   });
   conn.on('close', function () {
       conn = null;
