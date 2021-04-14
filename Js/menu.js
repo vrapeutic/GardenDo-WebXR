@@ -203,6 +203,10 @@ function objectToPos(posObject) {
   return posObject.x + " " + posObject.y + " " + posObject.z;
 }
 
+function objectToRot(posObject) {
+  return posObject._x + " " + posObject._y + " " + posObject._z;
+}
+
 document.addEventListener("keydown", function(e){
   if ( e.key == 'e' ) {
     var camRig = document.querySelector("#camRig");
@@ -224,39 +228,36 @@ function ready() {
   transitDiv.remove();
   drMenuDiv.style.visibility = 'visible';
 
+  document.querySelector('[camera]').removeAttribute('wasd-controls');
+
   conn.on('data', function (data) {
     var incomingData = JSON.parse(data)
-    // console.log(IAM, 'got data', incomingData);
+    console.log(IAM, 'got data', incomingData);
 
     if ( incomingData.object3D == 'camera' ) {
-      var camRig = document.querySelector("#camRig");
+      // var camRig = document.querySelector("#camRig");
+      var camRig = document.querySelector('[camera]');
 
-      var camPos = objectToPos(camRig.getAttribute('position'));
       var newPos = objectToPos(incomingData.position);
-      // newPos = (camRig.getAttribute('position').x + 1) + " " + (camRig.getAttribute('position').y + 1) + " " + (camRig.getAttribute('position').z + 1)
 
-      var camRot = objectToPos(camRig.getAttribute('rotation'));
-      var newRot = objectToPos(incomingData.rotation);
-
-      // console.log('FROM', camPos)
-      // console.log('TO', newPos)
-
-      // camRig.setAttribute('animation', `property: position; from: ${camPos}; to: ${newPos}; dur: 700`)
-      // camRig.setAttribute('animation', `property: rotation; from: ${camRot}; to: ${newRot}; dur: 700;`)
-
-      // // console.log('old')
-      // console.log(camRig.getAttribute('position'))
-      // // console.log(camRig.getAttribute('rotation'))
       camRig.setAttribute('position', newPos)
-      camRig.setAttribute('rotation', newRot)
-      // console.log('new')
-      // console.log(camRig.getAttribute('position'))
-      // // console.log(camRig.getAttribute('rotation'))
+
+      camRig.removeAttribute('look-controls');
+      camRig.object3D.rotation.x = incomingData.rotation._x
+      camRig.object3D.rotation.y = incomingData.rotation._y
+      camRig.object3D.rotation.z = incomingData.rotation._z
+      camRig.setAttribute('look-controls-enabled', true);
+
     }
   });
   conn.on('close', function () {
       conn = null;
   });
+}
+
+function rad2deg(radians) {
+  var pi = Math.PI;
+  return radians * (180/pi);
 }
 
 function join() {
