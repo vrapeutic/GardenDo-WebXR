@@ -29,8 +29,8 @@ AFRAME.registerComponent('camera-head', {
           var position = this.el.object3D.position;
           var rotation = this.el.object3D.rotation;
 
-          console.log('position', position)
-          console.log('rotation', rotation)
+          // console.log('position', position)
+          // console.log('rotation', rotation)
 
           // var position = this.el.object3D.getWorldPosition(new THREE.Vector3());
           // var quaternion = this.el.object3D.getWorldQuaternion(new THREE.Quaternion());
