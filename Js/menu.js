@@ -228,7 +228,6 @@ function ready() {
   transitDiv.remove();
   drMenuDiv.style.visibility = 'visible';
 
-  document.querySelector('[camera]').removeAttribute('wasd-controls');
 
   conn.on('data', function (data) {
     var incomingData = JSON.parse(data)
@@ -240,12 +239,20 @@ function ready() {
 
       var newPos = objectToPos(incomingData.position);
 
+      camRig.removeAttribute('wasd-controls');
       camRig.setAttribute('position', newPos)
+      camRig.setAttribute('wasd-controls');
+      camRig.setAttribute('wasd-controls', true);
+      camRig.setAttribute('wasd-controls', 'true');
+      camRig.setAttribute('wasd-controls-enabled', true);
 
       camRig.removeAttribute('look-controls');
       camRig.object3D.rotation.x = incomingData.rotation._x
       camRig.object3D.rotation.y = incomingData.rotation._y
       camRig.object3D.rotation.z = incomingData.rotation._z
+      camRig.setAttribute('look-controls');
+      camRig.setAttribute('look-controls', true);
+      camRig.setAttribute('look-controls', 'true');
       camRig.setAttribute('look-controls-enabled', true);
 
     }
