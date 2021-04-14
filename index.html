@@ -41,7 +41,7 @@
       font-size: larger;
     }
 
-    button {
+    .button-cls {
       font-family: "Roboto", sans-serif;
       border-radius: 5px;
       background-color: #25b2c2;
@@ -49,7 +49,7 @@
       color: #FFFFFF;
       text-align: center;
       font-size: 25px;
-      -webkit-transition-duration: 0.4s; /* Safari */
+      -webkit-transition-duration: 0.4s;
       transition-duration: 0.4s;
       text-decoration: none;
       overflow: hidden;
@@ -57,11 +57,11 @@
       margin: 5px;
     }
 
-    .button:hover {
+    .button-cls:hover {
       background-color: #3e8e41
     }
 
-    .center {
+    /* .center {
       margin: 0 auto;
       width: 80%;
       text-align: center;
@@ -76,7 +76,7 @@
       right: 0;
         
       margin: auto;
-    }
+    } */
   </style>
 </head>
 
@@ -85,8 +85,8 @@
   <div id="choose-role" style="visibility: visible;" class="center">
     <h style="font-size: 30px;">Select Role</h>
     <br>
-    <button class="button" onclick="selectRole('doctor')">Doctor</button>
-    <button class="button" onclick="selectRole('child')">Child</button>
+    <button class="button button-cls" onclick="selectRole('doctor')">Doctor</button>
+    <button class="button button-cls" onclick="selectRole('child')">Child</button>
   </div>
 
   <div id="transit" style="visibility: hidden;" class="center">
@@ -101,7 +101,7 @@
       <br>
       <input type="text" id="receiver-id" title="Input the ID from receive.html">
       <br>
-      <button id="connect-button" onclick="join()">Connect</button>
+      <button id="connect-button" class="button-cls" onclick="join()">Connect</button>
     </div>
   </div>
 
@@ -112,31 +112,31 @@
   <div id="dr-menu" style="visibility: hidden;" class="center">
     <h>Select langauge</h>
     <br>
-    <button class="button" onclick="set_language('A')">Arabic </button>
-    <button class="button" onclick="set_language('E')">English </button>
+    <button class="button button-cls" onclick="set_language('A')">Arabic </button>
+    <button class="button button-cls" onclick="set_language('E')">English </button>
     <br> <br>
     <h>Select level</h>
     <br>
-    <button class="button" onclick="set_level(1)">Level 1</button>
-    <button class="button" onclick="set_level(2)">Level 2</button>
-    <button class="button" onclick="set_level(3)">Level 3</button>
+    <button class="button button-cls" onclick="set_level(1)">Level 1</button>
+    <button class="button button-cls" onclick="set_level(2)">Level 2</button>
+    <button class="button button-cls" onclick="set_level(3)">Level 3</button>
     <br> <br>
     <h>Select flower growth time</h>
     <br>
-    <button class="button" onclick="set_growth_time(1)">10</button>
-    <button class="button" onclick="set_growth_time(1.5)">7</button>
-    <button class="button" onclick="set_growth_time(2)">4</button>
+    <button class="button button-cls" onclick="set_growth_time(1)">10</button>
+    <button class="button button-cls" onclick="set_growth_time(1.5)">7</button>
+    <button class="button button-cls" onclick="set_growth_time(2)">4</button>
     <br> <br>
     <h>Select npc</h>
     <br>
-    <button class="button" onclick="set_npc('male')">Male</button>
-    <button class="button" onclick="set_npc('female')">Female</button>
+    <button class="button button-cls" onclick="set_npc('male')">Male</button>
+    <button class="button button-cls" onclick="set_npc('female')">Female</button>
     <br> <br>
-    <button class="button" onclick="start_game()">Start</button>
+    <button class="button button-cls" onclick="start_game()">Start</button>
   </div>
 
   <div id="game" style="visibility: hidden;">
-    <a-scene physics:"gravity: -9; restitution:9">
+    <a-scene physics:"gravity: -9; restitution:9" vr-mode-ui="enabled: true">
       <a-assets>
         <canvas id="cam2"></canvas>
 
@@ -426,7 +426,7 @@
 
 
       <a-entity id="camRig">
-        <a-camera id="cam" look-controls camera-head></a-camera>
+        <a-camera id="cam" camera-head></a-camera>
       </a-entity>
       <!-- <a-camera id="cam" look-controls="false" camera-head>
       </a-camera> -->
