@@ -132,6 +132,20 @@ function selectRole(role) {
   initPeerJS(role);
 }
 
+function copyToClipboard() {
+  var drIDElement = document.getElementById('dr-id');
+  var tmp = drIDElement.innerHTML.split( "<br>" );
+
+  var childURL = tmp[tmp.length - 1];
+  
+  const el = document.createElement('textarea');
+  el.value = childURL;
+  document.body.appendChild(el);
+  el.select();
+  document.execCommand('copy');
+  document.body.removeChild(el);
+}
+
 function initPeerJS(role, drIDElement) {
   var drIDElement = document.getElementById('dr-id');
   var status = document.getElementById("status");
@@ -151,7 +165,14 @@ function initPeerJS(role, drIDElement) {
     
     if ( role == 'doctor' ) {
       console.log('ID: ' + peer.id);
-      drIDElement.innerHTML = drIDElement.innerHTML + "<br>" + peer.id;
+      console.log(`${document.URL}/?id=` + peer.id);
+      drIDElement.innerHTML = drIDElement.innerHTML + "<br>" + `${document.URL}?id=` + peer.id;
+    } else if ( role == 'child' ) {
+      var currentURL = document.URL;
+      var tokens = currentURL.split("=");
+      var id = tokens[tokens.length - 1];
+      document.getElementById('receiver-id').value = id;
+      document.getElementById('connect-button').click();
     }
   });
   peer.on('connection', function (c) {
@@ -279,7 +300,8 @@ function join() {
 
   // Close old connection
   if (conn) {
-      conn.close();
+    console.log('closing old connection...')
+    conn.close();
   }
 
   // Create connection to destination peer specified in the input field
@@ -355,3 +377,5 @@ function executeFunctionByName ( functionName, context /*, args */ ) {
 
   return context[ func ].apply( context, args );
 }
+
+
