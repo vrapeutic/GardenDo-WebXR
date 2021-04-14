@@ -228,6 +228,7 @@ function ready() {
   transitDiv.remove();
   drMenuDiv.style.visibility = 'visible';
 
+  document.querySelector('a-scene').setAttribute('vr-mode-ui', 'enabled', false)
 
   conn.on('data', function (data) {
     var incomingData = JSON.parse(data)
