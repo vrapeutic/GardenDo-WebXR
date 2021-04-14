@@ -1,4 +1,5 @@
 
+
 AFRAME.registerComponent("level-manager", {
   
     init: function()
@@ -6,6 +7,7 @@ AFRAME.registerComponent("level-manager", {
   console.log('level manager');
   let bird = document.getElementById('myDs');
   let butterFly = document.getElementById('butterflymodel');
+  
       if(sessionStorage.getItem('level') == 2)
         {
           butterFly.setAttribute('visible','true');
