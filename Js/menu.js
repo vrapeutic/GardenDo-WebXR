@@ -151,7 +151,7 @@ function initPeerJS(role, drIDElement) {
     
     if ( role == 'doctor' ) {
       console.log('ID: ' + peer.id);
-      drIDElement.innerHTML = drIDElement.innerHTML + peer.id;
+      drIDElement.innerHTML = drIDElement.innerHTML + "<br>" + peer.id;
     }
   });
   peer.on('connection', function (c) {

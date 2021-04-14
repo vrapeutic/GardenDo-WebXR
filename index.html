@@ -4,6 +4,7 @@
 <head>
   <title>GardenDo</title>
 
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto">
   <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
   <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
   <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
@@ -32,36 +33,83 @@
   <script src="Js/menu.js"> </script>
   <script src="Js/camRender.js"> </script>
   <script src="Js/syncCamera.js"> </script>
+
+  <style>
+    body {
+      font-family: "Roboto", sans-serif;
+      background-color:azure;
+      font-size: larger;
+    }
+
+    button {
+      font-family: "Roboto", sans-serif;
+      border-radius: 5px;
+      background-color: #25b2c2;
+      border: none;
+      color: #FFFFFF;
+      text-align: center;
+      font-size: 25px;
+      -webkit-transition-duration: 0.4s; /* Safari */
+      transition-duration: 0.4s;
+      text-decoration: none;
+      overflow: hidden;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    .button:hover {
+      background-color: #3e8e41
+    }
+
+    .center {
+      margin: 0 auto;
+      width: 80%;
+      text-align: center;
+
+      width: 70%;
+      height: 70%;
+      
+      position: absolute;
+      top:0;
+      bottom: 0;
+      left: 0;
+      right: 0;
+        
+      margin: auto;
+    }
+  </style>
 </head>
 
 <body>
 
-  <div id="choose-role" style="visibility: visible;">
-    <h>Select Role</h>
+  <div id="choose-role" style="visibility: visible;" class="center">
+    <h style="font-size: 30px;">Select Role</h>
     <br>
     <button class="button" onclick="selectRole('doctor')">Doctor</button>
     <button class="button" onclick="selectRole('child')">Child</button>
   </div>
 
-  <div id="transit" style="visibility: hidden;">
+  <div id="transit" style="visibility: hidden;" class="center">
     <div id="status"></div>
 
     <div id="dr-gen-id" style="visibility: hidden;">
-      <h id="dr-id">Your ID is: </h>
+      <h id="dr-id">Your Doctor ID is: </h>
     </div>
 
     <div id="child-enter-id" style="visibility: hidden;">
-      <span style="font-weight: bold">ID: </span>
+      <span style="font-weight: bold">Enter your doctor's ID: </span>
+      <br>
       <input type="text" id="receiver-id" title="Input the ID from receive.html">
+      <br>
       <button id="connect-button" onclick="join()">Connect</button>
     </div>
   </div>
 
-  <div id="child-wait" style="visibility: hidden;">
+  <div id="child-wait" style="visibility: hidden;" class="center">
     Waiting for doctor to start the exercise...
   </div>
 
-  <div id="dr-menu" style="visibility: hidden;">
+  <div id="dr-menu" style="visibility: hidden;" class="center">
     <h>Select langauge</h>
     <br>
     <button class="button" onclick="set_language('A')">Arabic </button>
