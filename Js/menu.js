@@ -170,9 +170,12 @@ function initPeerJS(role, drIDElement) {
     } else if ( role == 'child' ) {
       var currentURL = document.URL;
       var tokens = currentURL.split("=");
-      var id = tokens[tokens.length - 1];
-      document.getElementById('receiver-id').value = id;
-      document.getElementById('connect-button').click();
+
+      if ( tokens.length > 1 ) {
+        var id = tokens[tokens.length - 1];
+        document.getElementById('receiver-id').value = id;
+        document.getElementById('connect-button').click();
+      }
     }
   });
   peer.on('connection', function (c) {
