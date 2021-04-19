@@ -361,7 +361,7 @@
         event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false" 
         event-set__dragon="_event: dragover-start; wireframe: true" 
         event-set__dragoff="_event: dragover-end; wireframe: false" 
-        id="tape_example"  class="water-bucket"   color="blue"  position="1.29631 0.7 -0.03413"  rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="1.8" width="0.5"  material="visible: true"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
+        id="tape_example"  class="water-bucket"   color="blue"  position="1.29631 0.7 -0.03413"  rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="1.8" width="0.5"  material="visible: false"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
            <a-gltf-model      
     src="#bucket"
 
@@ -407,13 +407,13 @@
 
       <a-gltf-model id="butterflymodel" src="#butterfly" position="0 0 -1" animation-mixer butterfly scale="3 3 3 "
         visible="false"></a-gltf-model>
-      <a-gltf-model id="flower1" src="#flower-4" position="-0.95925 0.03255 -0.5" animation-mixer="timeScale: 0"
+      <a-gltf-model id="flower1" src="#flower-4" rotation = "0 180 0" position="-0.95925 0.03255 -0.5" animation-mixer="timeScale: 0"
         flower-finished="" player-looking="flower:flower1;canWater:true"></a-gltf-model>
-      <a-gltf-model id="flower2" src="#flower-2" position="-0.95925 0.03255 -0.2" animation-mixer="timeScale :0"
+      <a-gltf-model id="flower2" src="#flower-2" rotation = "0 180 0" position="-0.95925 0.03255 -0.2" animation-mixer="timeScale :0"
         player-looking="flower:flower2;canWater:false"></a-gltf-model>
-      <a-gltf-model id="flower3" src="#flower-3" position="-0.95925 0.03255 0.1" animation-mixer="timeScale :0"
+      <a-gltf-model id="flower3" src="#flower-3" rotation = "0 180 0" position="-0.95925 0.03255 0.1" animation-mixer="timeScale :0"
         player-looking="flower:flower3;canWater:false"></a-gltf-model>
-      <a-gltf-model id="flower4" src="#flower-4" position="-0.95925 0.03255 0.4" animation-mixer="timeScale :0"
+      <a-gltf-model id="flower4" src="#flower-4" rotation = "0 180 0" position="-0.95925 0.03255 0.4" animation-mixer="timeScale :0"
         player-looking="flower:flower4;canWater:false"></a-gltf-model>
 
 
