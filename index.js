@@ -48,3 +48,14 @@ var lastPeerId = null;
 var peerId = null;
 var conn = null;
 var gameStarted = false;
+var gameHTMLFile = {
+      gardenDo: '',
+}
+
+
+$(document).ready(function() {
+      //fetch text file
+      $.get('game.scene', function(data) {
+            gameHTMLFile['gardenDo'] = data;
+      });
+});
