@@ -20,7 +20,7 @@ AFRAME.registerComponent('start-collision', {
         let WVFX = document.getElementById('particle');
       let canInterupt = false;
        let limitedInteruption_el = document.getElementById("limited-interuption");
-       let flowerSync = document.getElementById("flower-sync");
+      // let flowerSync = document.getElementById("flower-sync");
        
         el.addEventListener("hitstart",function(){
           
@@ -34,7 +34,7 @@ AFRAME.registerComponent('start-collision', {
                   
                   el.setAttribute('material','color','black');
                   floweranim.setAttribute('animation-mixer','timeScale','1');
-                  flowerSync.emit('flower-grow');
+                 // flowerSync.emit('flower-grow');
                   limitedInteruption_el.emit('canInterupt');
                   response_el.emit('stop');
                   AAS_el.emit('calculate');
@@ -64,7 +64,7 @@ AFRAME.registerComponent('start-collision', {
            //deactivate AAS calculation here;
             window.isBucketWatering = false;
             floweranim.setAttribute('animation-mixer','timeScale','-1');
-            flowerSync.emit('flower-reverse');
+            //flowerSync.emit('flower-reverse');
             AAS_el.emit('stop');
            WVFX.setAttribute('visible','false');
             window.isReversing = true;

@@ -17,7 +17,7 @@ AFRAME.registerComponent('player-looking', {
     let data = this.data;
     let floweranim = document.getElementById(data.flower);
     let WVFX = document.getElementById('particle');
-    let flowerSync = document.getElementById("flower-sync");
+    //let flowerSync = document.getElementById("flower-sync");
      let limitedInteruption_el = document.getElementById("limited-interuption");
     let canInterupt = false;
     //when player is looking
@@ -35,7 +35,7 @@ AFRAME.registerComponent('player-looking', {
           response_el.emit("stop")
           //activate AAS calculation here
           floweranim.setAttribute('animation-mixer','timeScale','1');
-          flowerSync.emit('flower-grow');
+       //   flowerSync.emit('flower-grow');
            limitedInteruption_el.emit('canInterupt');
           AAS_el.emit('calculate');
           WVFX.setAttribute('visible', 'true');
@@ -66,7 +66,7 @@ AFRAME.registerComponent('player-looking', {
           AAS_el.emit('stop');
            
            floweranim.setAttribute('animation-mixer','timeScale','-1');
-           flowerSync.emit('flower-reverse');
+          // flowerSync.emit('flower-reverse');
            WVFX.setAttribute('visible','false');
            window.isReversing = true;
            sensor = document.getElementById('sensor'+window.flowerIndex);

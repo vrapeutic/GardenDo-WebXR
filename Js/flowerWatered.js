@@ -12,7 +12,7 @@ AFRAME.registerComponent('flower-finished', {
     let bird = document.getElementById('myDs')
     let stats_el = document.getElementById('stats')
       let timTaken_el =document.getElementById('timeTaken');
-      let flowerSync = document.getElementById("flower-sync");
+     // let flowerSync = document.getElementById("flower-sync");
     el.addEventListener('animation-loop',function(){
       console.log('loop finisihed');
       if(window.isReversing)
@@ -37,7 +37,7 @@ AFRAME.registerComponent('flower-finished', {
                     npc.setAttribute('sound','playSound');
                     npc.setAttribute('sound-handler','isGoodJob','true');    
                     npc.setAttribute('animation-mixer','timeScale','1');
-                    flowerSync.emit('flower-finished');
+                  //  flowerSync.emit('flower-finished');
                  
                    sensor_el = document.getElementById('sensor'+window.flowerIndex);
                    flower_el = document.getElementById('flower'+window.flowerIndex);
