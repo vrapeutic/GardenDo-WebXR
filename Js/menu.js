@@ -90,7 +90,14 @@ function start_game() {
     drMenuDiv.style.visibility = 'hidden';
   } else if ( IAM == 'child' ) {
     var childWaitDiv = document.getElementById('child-wait');
-    childWaitDiv.visibility = 'hidden';
+    childWaitDiv.style.visibility = 'hidden';
+
+    document.getElementById('start-call').click();
+    console.log('I am clicking!!')
+  } else if ( IAM == 'standalone' ) {
+    console.log('standalone')
+    var chooseRoleDiv = document.getElementById('choose-role');
+    chooseRoleDiv.style.visibility = 'hidden';
   }
 
   gameDiv.style.visibility = 'visible';
@@ -206,6 +213,7 @@ function initPeerJS(role, drIDElement) {
       ready();
     }
   });
+  peer.on('call', onReceiveCall);
   peer.on('disconnected', function () {
     status.innerHTML = "Connection lost. Please reconnect";
     console.log('Connection lost. Please reconnect');
@@ -257,7 +265,7 @@ function ready() {
 
   conn.on('data', function (data) {
     var incomingData = JSON.parse(data)
-    console.log(IAM, 'got data', incomingData);
+    // console.log(IAM, 'got data', incomingData);
 
     if ( incomingData.object3D == 'camera' ) {
       // var camRig = document.querySelector("#camRig");
@@ -383,3 +391,61 @@ function executeFunctionByName ( functionName, context /*, args */ ) {
 }
 
 
+function getAudio(successCallback, errorCallback){
+  navigator.mediaDevices.getUserMedia({
+      audio: true,
+      video: false
+  }, successCallback, errorCallback);
+}
+
+function onReceiveCall(call){
+
+  console.log('peer is calling...');
+  console.log(call);
+
+  getAudio(
+      function(MediaStream){
+          call.answer(MediaStream);
+          console.log('answering call started...');
+      },
+      function(err){
+          console.log('an error occured while getting the audio');
+          console.log(err);
+      }
+  );
+
+  call.on('stream', onReceiveStream);
+}
+
+function onReceiveStream(stream){
+  var audio = document.querySelector('audio');
+  audio.src = window.URL.createObjectURL(stream);
+  audio.onloadedmetadata = function(e){
+      console.log('now playing the audio');
+      audio.play();
+  }
+}
+
+$('#start-call').click(function(){
+
+  console.log('starting call...');
+
+  getAudio(
+      function(MediaStream){
+        var currentURL = document.URL;
+        var tokens = currentURL.split("=");
+
+        if ( tokens.length > 1 ) {
+          var id = tokens[tokens.length - 1];
+          console.log('now calling ' + id);
+          var call = peer.call(id, MediaStream);
+          call.on('stream', onReceiveStream);
+        }
+      },
+      function(err){
+        console.log('an error occured while getting the audio');
+        console.log(err);
+      }
+  );
+
+});
