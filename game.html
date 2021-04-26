@@ -4,15 +4,16 @@
     
     <title>GardenDo</title>
     
-        <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
-        <script src="https://unpkg.com/aframe-physics-system@1.4.0/dist/aframe-physics-system.min.js"></script>
-       <script src="https://unpkg.com/aframe-event-set-component@5.0.0/dist/aframe-event-set-component.min.js"></script>
-       <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>
-         <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
-    <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
-    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>   
-   <script src="https://unpkg.com/aframe-spe-particles-component@^1.0.4/dist/aframe-spe-particles-component.min.js"></script>
- 
+    <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
+        
+     
+    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>       
+ <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+ <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>   
+<script src="https://unpkg.com/aframe-spe-particles-component@^1.0.4/dist/aframe-spe-particles-component.min.js"></script>
+ <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
+ <script src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"></script>
+ <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
   
   <script src="https://unpkg.com/aframe-aabb-collider-component@3.1.0/dist/aframe-aabb-collider-component.min.js"></script> 
   
@@ -34,7 +35,7 @@
   
 </head>
 <body>
-  <a-scene physics:"gravity: -9; restitution:9">
+  <a-scene physics="iterations: 40">
     <a-assets>
       <canvas id="cam2"></canvas>
 
@@ -158,8 +159,9 @@
      <a-gltf-model src="#enviroment" game-manager ></a-gltf-model>
      <a-gltf-model id="handlemdoel" src="#handle"  animation-mixer="timeScale = 0" position="1.251 0.269 0.496" handle></a-gltf-model>
       <a-entity level-manager></a-entity>
-      
+      <!-------
     <a-entity id="flower-sync" flower-sync ></a-entity>
+----->
       <a-entity id="responsTime" calculate-response ></a-entity>
       <a-entity id = "stats" calculate-stats></a-entity>
         <a-entity id="timeTaken"  calculate-time-taken ></a-entity>
@@ -239,32 +241,28 @@
         <!-- grabbable etc. box -->
      
       
-  <a-box position ="0.8 0 0" scale="0.3 1 0.3" static-body ></a-box> 
-     <a-box el-sync
-        dynamic-body 
-        hoverable 
-        grabbable 
-        stretchable 
-        draggable   
-        event-set__hoveron="_event: hover-start; material.opacity: 0.7; transparent: true" 
-        event-set__hoveroff="_event: hover-end; material.opacity: 1; transparent: false" 
-        event-set__dragon="_event: dragover-start; wireframe: true" 
-        event-set__dragoff="_event: dragover-end; wireframe: false" 
-        id="tape_example"  class="water-bucket"   color="blue"  position="0.8 0.6 0" rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="2" width="0.5"  material="visible: false"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
-           <a-gltf-model      
-    src="#bucket"
+  <a-plane position="1.6631 0.575 -0.03413" static-body rotation="-90 0 0" visible = "false" ></a-plane>
+  <a-box  
+  dynamic-body 
+ 
+  grabbable 
+ 
+  id="tape_example"  class="water-bucket"   color="blue"  position="1.3631  0.7 -0.03413"  rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="1.8" width="0.5"  material="visible: false"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
+     <a-gltf-model      
+src="#bucket"
 
-     position="0 1.1 0.4"   
-                       scale="10 10 10"
-        color="blue" 
-         sphere-collider="radius:0.001">
-  
-    
-  
-      </a-gltf-model> 
-        <a-entity visible="false" position="-0.22554 0.50662 -4.386" id="particle" spe-particles="texture: https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2Fsnowflake.png?v=1610618333793; color: #0000FF, #00FFFF, #FFFFFF; opacity: 1, 1, 0; size: 1, 1, 0; velocity: 0 4 0; acceleration: 0 6 0; velocitySpread: 2 0 2; particleCount: 20" rotation="0 0 180">
-        </a-entity>
-      </a-box>
+position="0 0.8 0.4"   
+                 scale="10 10 10"
+  color="blue" 
+   sphere-collider="radius:0.001">
+
+
+
+</a-gltf-model> 
+  <a-entity visible="false" position="-0.22554 0.60662 -4.386" id="particle" spe-particles="texture: https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2Fsnowflake.png?v=1610618333793; color: #0000FF, #00FFFF, #FFFFFF; opacity: 1, 1, 0; size: 0.5, 0.5, 0; velocity: 0 4 0; acceleration: 0 6 0; velocitySpread: 2 0 2; particleCount: 20" rotation="0 0 180">
+  </a-entity>
+
+</a-box>
       
     
       
