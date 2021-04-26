@@ -29,4 +29,3 @@ AFRAME.registerComponent('flower-sync',{
     }
       
   });
-     

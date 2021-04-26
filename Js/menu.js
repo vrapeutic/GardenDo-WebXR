@@ -94,7 +94,10 @@ function start_game() {
   }
 
   gameDiv.style.visibility = 'visible';
-  gameStarted = true
+  gameStarted = true;
+
+  document.getElementById('injectable').innerHTML = gameHTMLFile['gardenDo']
+  document.querySelector('a-scene').setAttribute('vr-mode-ui', 'enabled', false)
 
   if ( IAM == 'doctor' ) {
     // var camera = document.getElementById('cam');
@@ -251,8 +254,6 @@ function ready() {
 
   transitDiv.remove();
   drMenuDiv.style.visibility = 'visible';
-
-  document.querySelector('a-scene').setAttribute('vr-mode-ui', 'enabled', false)
 
   conn.on('data', function (data) {
     var incomingData = JSON.parse(data)
