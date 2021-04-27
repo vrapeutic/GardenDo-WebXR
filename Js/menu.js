@@ -184,6 +184,7 @@ function initPeerJS(role, drIDElement) {
         var id = tokens[tokens.length - 1];
         document.getElementById('receiver-id').value = id;
         document.getElementById('connect-button').click();
+        console.log('connected with doctor')
       }
     }
   });
