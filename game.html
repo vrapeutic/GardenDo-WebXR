@@ -7,13 +7,14 @@
     <script src="https://aframe.io/releases/1.0.4/aframe.min.js"></script>
         
      
-    <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>       
- <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
- <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>   
-<script src="https://unpkg.com/aframe-spe-particles-component@^1.0.4/dist/aframe-spe-particles-component.min.js"></script>
- <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
- <script src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"></script>
- <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
+       <script src="https://cdn.jsdelivr.net/gh/donmccurdy/aframe-extras@v6.1.1/dist/aframe-extras.min.js"></script>       
+    <script src="https://unpkg.com/super-hands@2.1.0/dist/super-hands.min.js"></script>
+    <script src="https://rawgit.com/rdub80/aframe-gui/master/dist/aframe-gui.min.js"></script>   
+   <script src="https://unpkg.com/aframe-spe-particles-component@^1.0.4/dist/aframe-spe-particles-component.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/gh/n5ro/aframe-physics-system@v4.0.1/dist/aframe-physics-system.js"></script>
+    <script src="https://unpkg.com/aframe-event-set-component@^4.1.1/dist/aframe-event-set-component.min.js"></script>
+    <script src="https://unpkg.com/aframe-physics-extras/dist/aframe-physics-extras.min.js"></script>
+  
   
   <script src="https://unpkg.com/aframe-aabb-collider-component@3.1.0/dist/aframe-aabb-collider-component.min.js"></script> 
   
@@ -240,14 +241,14 @@
 
         <!-- grabbable etc. box -->
      
-      
-  <a-plane position="1.6631 0.575 -0.03413" static-body rotation="-90 0 0" visible = "false" ></a-plane>
+   <a-cylinder static-body color="crimson" height="0.8" radius="0.13" position="0.14008 0 -0.58" material="" geometry=""></a-cylinder>
+  <a-plane  position="0.23  0.7 -0.58"  static-body rotation="-90 0 0" visible = "false" ></a-plane>
   <a-box  
   dynamic-body 
  
   grabbable 
  
-  id="tape_example"  class="water-bucket"   color="blue"  position="1.3631  0.7 -0.03413"  rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="1.8" width="0.5"  material="visible: false"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
+  id="tape_example"  class="water-bucket"   color="blue"  position="0.23  0.7 -0.58"  rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="1.8" width="0.5"  material="visible: true"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
      <a-gltf-model      
 src="#bucket"
 
@@ -277,29 +278,17 @@ position="0 0.8 0.4"
 
     <a-plane position="0 0 0" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
 
-    <a-box id="sensor1" depth="0.25" width="0.25" height="1.2" position="-0.95925 0.1 -0.5"
-      aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower1;canCollide:true"
-      class="clickable" hoverable data-aabb-collider-dynamic></a-box>
-    <a-box id="sensor2" depth="0.25" width="0.25" height="1.2" position="-0.95925 0.1 -0.2"
-      aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower2;canCollide:false"
-      class="clickable" hoverable data-aabb-collider-dynamic></a-box>
-    <a-box id="sensor3" depth="0.25" width="0.25" height="1.2" position="-0.95925 0.1  0.1"
-      aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower3;canCollide:false"
-      class="clickable" hoverable data-aabb-collider-dynamic></a-box>
-    <a-box id="sensor4" depth="0.25" width="0.25" height="1.2" position="-0.95925 0.1 0.4"
-      aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower4;canCollide:false"
-      class="clickable" hoverable data-aabb-collider-dynamic></a-box>
+    <a-box id="sensor1" depth="0.12" width = "0.12" height = "1.2" position = "-0.19746 0.03255 -0.35915" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower1;canCollide:true"  class = "clickable" hoverable data-aabb-collider-dynamic></a-box>   
+    <a-box id="sensor2" depth="0.12" width = "0.12" height = "1.2" position = "-0.37345 0.03255 -0.13064" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower2;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>      
+    <a-box id="sensor3" depth="0.12" width = "0.12" height = "1.2" position = "-0.28295 0.03255 0.14236" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower3;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>          
+    <a-box id="sensor4" depth="0.12" width = "0.12" height = "1.2" position = "-0.05821 0.03255 0.2892"  aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower4;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>  
 
     <a-gltf-model id="butterflymodel" src="#butterfly" position="0 0 -1" animation-mixer butterfly scale="3 3 3 "
       visible="false"></a-gltf-model>
-    <a-gltf-model id="flower1" src="#flower-4" position="-0.95925 0.03255 -0.5" animation-mixer="timeScale: 0"
-      flower-finished="" player-looking="flower:flower1;canWater:true"></a-gltf-model>
-    <a-gltf-model id="flower2" src="#flower-2" position="-0.95925 0.03255 -0.2" animation-mixer="timeScale :0"
-      player-looking="flower:flower2;canWater:false"></a-gltf-model>
-    <a-gltf-model id="flower3" src="#flower-3" position="-0.95925 0.03255 0.1" animation-mixer="timeScale :0"
-      player-looking="flower:flower3;canWater:false"></a-gltf-model>
-    <a-gltf-model id="flower4" src="#flower-4" position="-0.95925 0.03255 0.4" animation-mixer="timeScale :0"
-      player-looking="flower:flower4;canWater:false"></a-gltf-model>
+      <a-gltf-model id="flower1" src="#flower-4" rotation="0 180 0" position="-0.19746 0.03255 -0.35915" animation-mixer="timeScale: 0" flower-finished="" player-looking="canWater: true" ></a-gltf-model>
+      <a-gltf-model id="flower2" src="#flower-2" rotation="0 180 0" position="-0.37345 0.03255 -0.13064" animation-mixer="timeScale: 0" player-looking="flower: flower2" ></a-gltf-model>
+        <a-gltf-model id="flower3" src="#flower-3" rotation="0 180 0" position="-0.28295 0.03255 0.14236" animation-mixer="timeScale: 0" player-looking="flower: flower3" ></a-gltf-model>
+       <a-gltf-model id="flower4" src="#flower-4" rotation="0 180 0" position="-0.05821 0.03255 0.2892" animation-mixer="timeScale: 0" player-looking="flower: flower4" ></a-gltf-model>
 
 
     <a-gltf-model id="myDs" src="#bird" aabb-collider="objects: .hand" scale="0.015 0.015 0.015" animation-mixer
