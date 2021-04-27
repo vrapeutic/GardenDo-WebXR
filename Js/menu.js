@@ -323,6 +323,7 @@ function join() {
   }
 
   // Create connection to destination peer specified in the input field
+  console.log(recvIdInput.value)
   conn = peer.connect(recvIdInput.value, {
       reliable: true
   });
@@ -330,12 +331,6 @@ function join() {
   conn.on('open', function () {
       status.innerHTML = "Connected to: " + conn.peer;
       console.log("Connected to: " + conn.peer);
-
-      // Check URL params for comamnds that should be sent immediately
-      var command = getUrlParam("command");
-      console.log('command', command);
-      if (command)
-          conn.send(command);
   });
   // Handle incoming data (messages only since this is the signal sender)
   conn.on('data', function (data) {
