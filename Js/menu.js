@@ -138,6 +138,7 @@ function selectRole(role) {
     drGenIDDiv.style.visibility = 'visible';
   }
 
+  console.log('gonna init peerjs')
   initPeerJS(role);
 }
 
@@ -180,9 +181,12 @@ function initPeerJS(role, drIDElement) {
       var currentURL = document.URL;
       var tokens = currentURL.split("=");
 
+      console.log(tokens)
+
       if ( tokens.length > 1 ) {
         var id = tokens[tokens.length - 1];
         document.getElementById('receiver-id').value = id;
+        console.log('recevier id', id);
         document.getElementById('connect-button').click();
         console.log('connected with doctor')
       }
@@ -302,6 +306,8 @@ function rad2deg(radians) {
 }
 
 function join() {
+  console.log('joining')
+
   var recvIdInput = document.getElementById('receiver-id');
   var status = document.getElementById("status");
   var transitDiv = document.getElementById('transit');
