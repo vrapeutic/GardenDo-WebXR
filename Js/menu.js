@@ -117,6 +117,19 @@ function start_game() {
 }
 
 
+function mute(){
+  sessionStorage.setItem('isMuted','true');  
+  console.log('selected muted');
+  if ( IAM == 'doctor' ) {
+    var data = {
+      funcName: 'mute',
+      params: [
+        
+      ]
+    }
+    conn.send(JSON.stringify(data));
+  }
+}
 
 
 function selectRole(role) {
