@@ -92,8 +92,7 @@ function start_game() {
     var childWaitDiv = document.getElementById('child-wait');
     childWaitDiv.style.visibility = 'hidden';
 
-    document.getElementById('start-call').click();
-    console.log('I am clicking!!')
+    startCall();
   } else if ( IAM == 'standalone' ) {
     console.log('standalone')
     var chooseRoleDiv = document.getElementById('choose-role');
@@ -104,7 +103,7 @@ function start_game() {
   gameStarted = true;
 
   document.getElementById('injectable').innerHTML = gameHTMLFile['gardenDo']
-  document.querySelector('a-scene').setAttribute('vr-mode-ui', 'enabled', false)
+  document.querySelector('a-scene').setAttribute('vr-mode-ui', 'enabled', true)
 
   if ( IAM == 'doctor' ) {
     // var camera = document.getElementById('cam');
@@ -395,7 +394,8 @@ function getAudio(successCallback, errorCallback){
   navigator.mediaDevices.getUserMedia({
       audio: true,
       video: false
-  }, successCallback, errorCallback);
+  }).then(successCallback)
+    .catch(errorCallback)
 }
 
 function onReceiveCall(call){
@@ -419,15 +419,15 @@ function onReceiveCall(call){
 
 function onReceiveStream(stream){
   var audio = document.querySelector('audio');
-  audio.src = window.URL.createObjectURL(stream);
+  console.log(stream)
+  audio.srcObject = stream;
   audio.onloadedmetadata = function(e){
       console.log('now playing the audio');
       audio.play();
   }
 }
 
-$('#start-call').click(function(){
-
+function startCall() {
   console.log('starting call...');
 
   getAudio(
@@ -438,8 +438,8 @@ $('#start-call').click(function(){
         if ( tokens.length > 1 ) {
           var id = tokens[tokens.length - 1];
           console.log('now calling ' + id);
-          var call = peer.call(id, MediaStream);
-          call.on('stream', onReceiveStream);
+          myCall = peer.call(id, MediaStream);
+          myCall.on('stream', onReceiveStream);
         }
       },
       function(err){
@@ -448,4 +448,4 @@ $('#start-call').click(function(){
       }
   );
 
-});
+}
