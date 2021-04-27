@@ -196,6 +196,7 @@ function initPeerJS(role, drIDElement) {
     if ( role == 'child' ) {
       // Disallow incoming connections
       c.on('open', function() {
+          console.log('closing...')
           c.send("Sender does not accept incoming connections");
           setTimeout(function() { c.close(); }, 500);
       });
@@ -323,7 +324,7 @@ function join() {
   }
 
   // Create connection to destination peer specified in the input field
-  console.log(recvIdInput.value)
+  console.log('recvIdInput.value', recvIdInput.value)
   conn = peer.connect(recvIdInput.value, {
       reliable: true
   });
