@@ -328,6 +328,7 @@ function join() {
   conn = peer.connect(recvIdInput.value, {
       reliable: true
   });
+  console.log(conn);
 
   conn.on('open', function () {
       status.innerHTML = "Connected to: " + conn.peer;
