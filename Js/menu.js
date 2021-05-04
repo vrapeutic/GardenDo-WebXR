@@ -117,6 +117,19 @@ function start_game() {
 }
 
 
+function mute(){
+  sessionStorage.setItem('isMuted','true');  
+  console.log('selected muted');
+  if ( IAM == 'doctor' ) {
+    var data = {
+      funcName: 'mute',
+      params: [
+        
+      ]
+    }
+    conn.send(JSON.stringify(data));
+  }
+}
 
 
 function selectRole(role) {
@@ -138,6 +151,7 @@ function selectRole(role) {
     drGenIDDiv.style.visibility = 'visible';
   }
 
+  console.log('gonna init peerjs')
   initPeerJS(role);
 }
 
@@ -190,10 +204,14 @@ function initPeerJS(role, drIDElement) {
       var currentURL = document.URL;
       var tokens = currentURL.split("=");
 
+      console.log(tokens)
+
       if ( tokens.length > 1 ) {
         var id = tokens[tokens.length - 1];
         document.getElementById('receiver-id').value = id;
+        console.log('recevier id', id);
         document.getElementById('connect-button').click();
+        console.log('connected with doctor')
       }
     }
   });
@@ -201,6 +219,7 @@ function initPeerJS(role, drIDElement) {
     if ( role == 'child' ) {
       // Disallow incoming connections
       c.on('open', function() {
+          console.log('closing...')
           c.send("Sender does not accept incoming connections");
           setTimeout(function() { c.close(); }, 500);
       });
@@ -311,6 +330,8 @@ function rad2deg(radians) {
 }
 
 function join() { // CHILD ONLY
+  console.log('joining')
+
   var recvIdInput = document.getElementById('receiver-id');
   var status = document.getElementById("status");
   var transitDiv = document.getElementById('transit');
@@ -326,19 +347,15 @@ function join() { // CHILD ONLY
   }
 
   // Create connection to destination peer specified in the input field
+  console.log('recvIdInput.value', recvIdInput.value)
   conn = peer.connect(recvIdInput.value, {
       reliable: true
   });
+  console.log(conn);
 
   conn.on('open', function () {
       status.innerHTML = "Connected to: " + conn.peer;
       console.log("Connected to: " + conn.peer);
-
-      // Check URL params for comamnds that should be sent immediately
-      var command = getUrlParam("command");
-      console.log('command', command);
-      if (command)
-          conn.send(command);
   });
   // Handle incoming data (messages only since this is the signal sender)
   conn.on('data', function (data) {
