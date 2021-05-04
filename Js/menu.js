@@ -94,9 +94,7 @@ function start_game() {
 
     // startCall();
   } else if ( IAM == 'standalone' ) {
-    console.log('standalone')
-    var chooseRoleDiv = document.getElementById('choose-role');
-    chooseRoleDiv.style.visibility = 'hidden';
+    console.log('standalone');
   }
 
   gameDiv.style.visibility = 'visible';
@@ -137,6 +135,7 @@ function selectRole(role) {
   var drGenIDDiv = document.getElementById('dr-gen-id');
   var transitDiv = document.getElementById('transit');
   var childDiv = document.getElementById('child-enter-id');
+  var drMenuDiv = document.getElementById('dr-menu');
   
   chooseRoleDiv.remove();
   transitDiv.style.visibility = 'visible';
@@ -147,12 +146,16 @@ function selectRole(role) {
 
   if ( role == 'child' ) {
     childDiv.style.visibility = 'visible';
+    console.log('gonna init peerjs')
+    initPeerJS(role);
   } else if ( role == 'doctor' ) {
     drGenIDDiv.style.visibility = 'visible';
+    console.log('gonna init peerjs')
+    initPeerJS(role);
+  } else if ( role == 'standalone' ) {
+    transitDiv.remove();
+    drMenuDiv.style.visibility = 'visible';
   }
-
-  console.log('gonna init peerjs')
-  initPeerJS(role);
 }
 
 function copyToClipboard() {
