@@ -92,7 +92,7 @@ function start_game() {
     var childWaitDiv = document.getElementById('child-wait');
     childWaitDiv.style.visibility = 'hidden';
 
-    // startCall();
+    startCall();
   } else if ( IAM == 'standalone' ) {
     console.log('standalone');
   }
