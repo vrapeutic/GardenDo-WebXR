@@ -4,7 +4,7 @@
   "description": "A plant watering exercise that is designed to address and measure the various variables of attention",
   "main": "index.html",
   "scripts": {
-    "dev": "live-server --no-browser --port=3000",
+    "dev": "live-server --no-browser",
     "test": "echo \"testing GardenDo webXR \""
   },
   "repository": {
