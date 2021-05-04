@@ -159,8 +159,18 @@ function initPeerJS(role, drIDElement) {
   var drIDElement = document.getElementById('dr-id');
   var status = document.getElementById("status");
 
-  peer = new Peer(null, {
-    debug: 2
+  peer = new Peer(null, 
+    {
+      config: {
+        'iceServers': [
+          { url: 'stun:stun.l.google.com:19302' },
+          { 
+            url: 'turn:192.158.29.39:3478?transport=tcp',
+            credential: 'JZEOEt2V3Qb0y27GRntt2u2PAYA=',
+            username: '28224511:1379330808'
+          }
+        ]
+      } /* Sample servers, please use appropriate ones */
   });
 
   peer.on('open', function (id) {
@@ -253,7 +263,7 @@ document.addEventListener("keydown", function(e){
   }
 });
 
-function ready() {
+function ready() { // DOCTOR ONLY
   console.log('I am ready');
 
   var transitDiv = document.getElementById('transit');
@@ -264,7 +274,7 @@ function ready() {
 
   conn.on('data', function (data) {
     var incomingData = JSON.parse(data)
-    // console.log(IAM, 'got data', incomingData);
+    console.log(IAM, 'got data', incomingData);
 
     if ( incomingData.object3D == 'camera' ) {
       // var camRig = document.querySelector("#camRig");
@@ -273,7 +283,7 @@ function ready() {
       var newPos = objectToPos(incomingData.position);
 
       camRig.removeAttribute('wasd-controls');
-      camRig.setAttribute('position', newPos)
+      camRig.setAttribute('position', newPos);
       camRig.setAttribute('wasd-controls');
       camRig.setAttribute('wasd-controls', true);
       camRig.setAttribute('wasd-controls', 'true');
@@ -300,7 +310,7 @@ function rad2deg(radians) {
   return radians * (180/pi);
 }
 
-function join() {
+function join() { // CHILD ONLY
   var recvIdInput = document.getElementById('receiver-id');
   var status = document.getElementById("status");
   var transitDiv = document.getElementById('transit');
@@ -332,13 +342,13 @@ function join() {
   });
   // Handle incoming data (messages only since this is the signal sender)
   conn.on('data', function (data) {
-    var incomingData = JSON.parse(data)
-    console.log('got data', incomingData);
+    var incomingData = JSON.parse(data);
+    console.log(IAM, 'got data', incomingData);
 
-    console.log(incomingData.funcName)
-    console.log(incomingData.params)
+    console.log(incomingData.funcName);
+    console.log(incomingData.params);
 
-    executeFunctionByName(incomingData.funcName, window, incomingData.params)
+    executeFunctionByName(incomingData.funcName, window, incomingData.params);
   });
   conn.on('close', function () {
       status.innerHTML = "Connection closed";
