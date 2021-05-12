@@ -298,6 +298,53 @@ function ready() { // DOCTOR ONLY
     var incomingData = JSON.parse(data)
     console.log(IAM, 'got data', incomingData);
 
+    switch(incomingData.object3D) {
+      case 'camera':
+        var camRig = document.querySelector('[camera]');
+
+      var newPos = objectToPos(incomingData.position);
+
+      camRig.removeAttribute('wasd-controls');
+      camRig.setAttribute('position', newPos);
+      camRig.setAttribute('wasd-controls');
+      camRig.setAttribute('wasd-controls', true);
+      camRig.setAttribute('wasd-controls', 'true');
+      camRig.setAttribute('wasd-controls-enabled', true);
+
+      camRig.removeAttribute('look-controls');
+      camRig.object3D.rotation.x = incomingData.rotation._x;
+      camRig.object3D.rotation.y = incomingData.rotation._y;
+      camRig.object3D.rotation.z = incomingData.rotation._z;
+      camRig.setAttribute('look-controls');
+      camRig.setAttribute('look-controls', true);
+      camRig.setAttribute('look-controls', 'true');
+      camRig.setAttribute('look-controls-enabled', true);
+        break;
+      case 'water-bucket':
+        console.log("bucket info recieve")
+     //var myObject = incomingData.object3D ;
+     var object_el = document.querySelector('.water-bucket');
+     var newPos = objectToPos(incomingData.position);
+     object_el.removeAttribute('dynamic-body');
+     object_el.removeAttribute('grabbable');
+     object_el.setAttribute('position', newPos);
+     object_el.object3D.rotation.x = incomingData.rotation._x;
+     object_el.object3D.rotation.y = incomingData.rotation._y;
+     object_el.object3D.rotation.z = incomingData.rotation._z;
+
+       break;
+
+     case'game-finished':     
+     console.log('game ended')
+     sessionStorage.setItem('allStats',JSON.stringify(incomingData.allStatistics));
+     setTimeout(function(){  window.open('finalPage.html',"_self"); }, 2000);
+
+     break;
+        break;
+      default:
+        // code block
+    }
+     /*
     if ( incomingData.object3D == 'camera' ) {
       // var camRig = document.querySelector("#camRig");
       var camRig = document.querySelector('[camera]');
@@ -321,6 +368,21 @@ function ready() { // DOCTOR ONLY
       camRig.setAttribute('look-controls-enabled', true);
 
     }
+    else if(incomingData.object3D == 'water-bucket'){
+
+
+      console.log("bucket info recieve")
+     //var myObject = incomingData.object3D ;
+     var object_el = document.querySelector('.water-bucket');
+     var newPos = objectToPos(incomingData.position);
+     object_el.removeAttribute('dynamic-body');
+     object_el.removeAttribute('grabbable');
+     object_el.setAttribute('position', newPos);
+     object_el.object3D.rotation.x = incomingData.rotation._x
+     object_el.object3D.rotation.y = incomingData.rotation._y
+     object_el.object3D.rotation.z = incomingData.rotation._z
+
+    }*/
   });
   conn.on('close', function () {
       conn = null;
