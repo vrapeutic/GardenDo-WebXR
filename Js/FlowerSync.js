@@ -11,18 +11,18 @@ AFRAME.registerComponent('flower-sync',{
      
       el.addEventListener('flower-grow',function(){      
        
-        console.log('flower grow');
+        
           
       });
       el.addEventListener('flower-reverse',function(){      
        
-        console.log('flower reverse');
+        
           
     });
 
     el.addEventListener('flower-finished',function(){      
        
-        console.log('flower finished');
+      
           
     });
              
