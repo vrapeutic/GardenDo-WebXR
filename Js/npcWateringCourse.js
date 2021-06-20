@@ -16,8 +16,22 @@
              el.setAttribute('sound', 'volume', 0);
              console.log('already muted');
          }
-         window.language = sessionStorage.getItem('langauage');
-         window.npc = sessionStorage.getItem('npc');
+         if(sessionStorage.getItem('langauage') !=null)
+         {
+            window.language = sessionStorage.getItem('langauage');
+         }
+         else{
+             window.language = 'A';
+         }
+
+         if(sessionStorage.getItem('npc') != null)
+         {
+            window.npc = sessionStorage.getItem('npc');
+         }
+         else{
+             window.npc = 'H';
+         }
+         
          setTimeout(function() {
 
              el.setAttribute('sound', 'src', '#welcome-sound' + window.language + window.npc);

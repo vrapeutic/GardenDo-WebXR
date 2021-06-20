@@ -41,7 +41,7 @@ var gameHTMLFile = {
 
 $(document).ready(function() {
     //fetch text file
-    $.get('game.scene', function(data) {
+    $.get('game.html', function(data) {
         gameHTMLFile['gardenDo'] = data;
     });
 });
