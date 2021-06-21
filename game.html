@@ -1,4 +1,5 @@
-<a-scene physics="iterations: 40">
+
+<a-scene vr-mode-ui="enabled: true"  physics="iterations: 40" >
     <a-assets>
      
 
@@ -167,9 +168,9 @@
     <a-plane position="0 0 0" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
 
     <a-box id="sensor1" depth="0.12" width = "0.12" height = "1.2" position = "-0.19746 0.03255 -0.35915" aabb-collider="objects: .water-bucket;collideNonVisible:true" visible="false" start-collision="flower:flower1;canCollide:true"  class = "sensor" hoverable data-aabb-collider-dynamic></a-box>   
-    <a-box id="sensor2" depth="0.12" width = "0.12" height = "1.2" position = "-0.37345 0.03255 -0.13064" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower2;canCollide:false" class = "sensor" hoverable data-aabb-collider-dynamic></a-box>      
-    <a-box id="sensor3" depth="0.12" width = "0.12" height = "1.2" position = "-0.28295 0.03255 0.14236" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower3;canCollide:false" class = "sensor" hoverable data-aabb-collider-dynamic></a-box>          
-    <a-box id="sensor4" depth="0.12" width = "0.12" height = "1.2" position = "-0.05821 0.03255 0.2892"  aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower4;canCollide:false" class = "sensor" hoverable data-aabb-collider-dynamic></a-box>  
+    <a-box id="sensor2" depth="0.12" width = "0.12" height = "1.2" position = "-0.37345 0.03255 -0.13064" aabb-collider="objects: .water-bucket;collideNonVisible:true" visible="false" start-collision="flower:flower2;canCollide:false" class = "sensor" hoverable data-aabb-collider-dynamic></a-box>      
+    <a-box id="sensor3" depth="0.12" width = "0.12" height = "1.2" position = "-0.28295 0.03255 0.14236" aabb-collider="objects: .water-bucket;collideNonVisible:true" visible="false" start-collision="flower:flower3;canCollide:false" class = "sensor" hoverable data-aabb-collider-dynamic></a-box>          
+    <a-box id="sensor4" depth="0.12" width = "0.12" height = "1.2" position = "-0.05821 0.03255 0.2892"  aabb-collider="objects: .water-bucket;collideNonVisible:true" visible="false" start-collision="flower:flower4;canCollide:false" class = "sensor" hoverable data-aabb-collider-dynamic></a-box>  
 
     <a-gltf-model id="butterflymodel" src="#butterfly" position="0 0 -1" animation-mixer butterfly scale="3 3 3 "
       visible="false"></a-gltf-model>
