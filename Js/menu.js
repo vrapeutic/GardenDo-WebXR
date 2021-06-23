@@ -102,6 +102,7 @@ function start_game() {
 
   document.getElementById('injectable').innerHTML = gameHTMLFile['gardenDo']
   document.querySelector('a-scene').setAttribute('vr-mode-ui', 'enabled', true)
+            document.querySelector('a-scene').enterVR();
 
   if ( IAM == 'doctor' ) {
     // var camera = document.getElementById('cam');
