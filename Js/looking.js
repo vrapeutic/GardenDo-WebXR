@@ -18,6 +18,8 @@ AFRAME.registerComponent('player-looking', {
         //let flowerSync = document.getElementById("flower-sync");
         let limitedInteruption_el = document.getElementById("limited-interuption");
         let canInterupt = false;
+
+        document.querySelector('a-scene').enterVR();
         //when player is looking
         this.eventHandlerFn = function(event) {
 
