@@ -38,10 +38,10 @@ var gameHTMLFile = {
     gardenDo: '',
 }
 
-
+/*
 $(document).ready(function() {
     //fetch text file
     $.get('game.html', function(data) {
         gameHTMLFile['gardenDo'] = data;
     });
-});
+});*/

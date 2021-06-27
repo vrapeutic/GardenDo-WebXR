@@ -30,8 +30,8 @@
   <script src="Js/levelManager.js"></script>
   <script src="Js/StatisticsCalculation.js"></script>
   <script src="Js/TimeCalculation.js" ></script>
-  <script src="Js/el_Sync.js"></script>
-  <script src="js/FlowerSync.js" ></script>
+  
+ 
   
   
 </head>
@@ -171,25 +171,23 @@
      
       <!-- grabbable etc. box -->
       
-          <a-box  
-        dynamic-body 
-       bucket-sync-reader
-        grabbable 
-       
-        id="bucket"  class="water-bucket"   color="blue"  position="0.23  0.57 -0.58"  rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="1.8" width="0.5"  material="visible: false"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
-           <a-gltf-model      
-    src="#bucket"
+      <a-box  
+      dynamic-body 
+     bucket-sync-reader
+      grabbable 
+     
+      id="bucket"    color="blue"  position="0.23  0.57 -0.58"  rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="1.8" width="0.5"  material="visible: false"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
+         <a-gltf-model      
+  src="#bucket"
 
-     position="0 0.8 0.4"   
-                       scale="10 10 10"
-        color="blue" 
-         sphere-collider="radius:0.001">
-  
-    
-  
-      </a-gltf-model> 
-  <a-entity visible="false" position="-0.22554 0.60662 -4.386" id="particle" spe-particles="texture: https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2Fsnowflake.png?v=1610618333793; color: #0000FF, #00FFFF, #FFFFFF; opacity: 1, 1, 0; size: 0.5, 0.5, 0; velocity: 0 4 0; acceleration: 0 6 0; velocitySpread: 2 0 2; particleCount: 20" rotation="0 0 180">
-  </a-entity>
+   position="0 0.8 0.4"   
+                     scale="10 10 10"
+      color="blue" 
+       sphere-collider="radius:0.001">
+   </a-gltf-model> 
+   <a-box class="water-bucket" position="-0.22554 0.8 -4.386" scale = "0.8 0.8 0.8" visible = "false" aabb-collider="objects: .sensor;collideNonVisible:true"></a-box>
+<a-entity visible="false" position="-0.22554 0.60662 -4.386" id="particle" spe-particles="texture: https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2Fsnowflake.png?v=1610618333793; color: #0000FF, #00FFFF, #FFFFFF; opacity: 1, 1, 0; size: 0.5, 0.5, 0; velocity: 0 4 0; acceleration: 0 6 0; velocitySpread: 2 0 2; particleCount: 20" rotation="0 0 180">
+</a-entity>
 
 </a-box>
       
@@ -206,10 +204,10 @@
 
     <a-plane position="0 0 0" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
 
-    <a-box id="sensor1" depth="0.12" width = "0.12" height = "1.2" position = "-0.19746 0.03255 -0.35915" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower1;canCollide:true"  class = "clickable" hoverable data-aabb-collider-dynamic></a-box>   
-    <a-box id="sensor2" depth="0.12" width = "0.12" height = "1.2" position = "-0.37345 0.03255 -0.13064" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower2;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>      
-    <a-box id="sensor3" depth="0.12" width = "0.12" height = "1.2" position = "-0.28295 0.03255 0.14236" aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower3;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>          
-    <a-box id="sensor4" depth="0.12" width = "0.12" height = "1.2" position = "-0.05821 0.03255 0.2892"  aabb-collider="objects: .water-bucket;" visible="false" start-collision="flower:flower4;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>  
+    <a-box id="sensor1" depth="0.12" width = "0.12" height = "1.2" position = "-0.19746 0.03255 -0.35915" aabb-collider="objects: .water-bucket;collideNonVisible:true" visible="false" start-collision="flower:flower1;canCollide:true"  class = "clickable" hoverable data-aabb-collider-dynamic></a-box>   
+    <a-box id="sensor2" depth="0.12" width = "0.12" height = "1.2" position = "-0.37345 0.03255 -0.13064" aabb-collider="objects: .water-bucket;collideNonVisible:true" visible="false" start-collision="flower:flower2;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>      
+    <a-box id="sensor3" depth="0.12" width = "0.12" height = "1.2" position = "-0.28295 0.03255 0.14236" aabb-collider="objects: .water-bucket;collideNonVisible:true" visible="false" start-collision="flower:flower3;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>          
+    <a-box id="sensor4" depth="0.12" width = "0.12" height = "1.2" position = "-0.05821 0.03255 0.2892"  aabb-collider="objects: .water-bucket;collideNonVisible:true" visible="false" start-collision="flower:flower4;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>  
 
     <a-gltf-model id="butterflymodel" src="#butterfly" position="0 0 -1" animation-mixer butterfly scale="3 3 3 "
       visible="false"></a-gltf-model>
