@@ -23,7 +23,7 @@ AFRAME.registerComponent("butterfly", {
     random++;  
     
      newpos=box[random].getAttribute("position");// restor next target for distractor
-     
+     el.setAttribute('look-at',newpos)
     el.setAttribute("animation","property:position; to:"+newpos.x+" 1 "+newpos.z+" dur:7000"); 
     
    // ds.setAttribute("position",{x:newpos.x,y:newpos.y,z:newpos.z})  ;
