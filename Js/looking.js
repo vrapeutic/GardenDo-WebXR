@@ -15,15 +15,15 @@ AFRAME.registerComponent('player-looking', {
         let data = this.data;
         let floweranim = document.getElementById(data.flower);
         let WVFX = document.getElementById('particle');
+        let isDistracted = false;
         //let flowerSync = document.getElementById("flower-sync");
-        let limitedInteruption_el = document.getElementById("limited-interuption");
-        let canInterupt = false;
+        
 
        // document.querySelector('a-scene').enterVR();
         //when player is looking
         this.eventHandlerFn = function(event) {
 
-            if (data.canWater) {
+            if (data.canWater&& !isDistracted) {
 
                 window.isPlayerLooking = true;
                 console.log("looking to flower event");
@@ -35,7 +35,7 @@ AFRAME.registerComponent('player-looking', {
                     //activate AAS calculation here
                     floweranim.setAttribute('animation-mixer', 'timeScale', '1');
                     //   flowerSync.emit('flower-grow');
-                    limitedInteruption_el.emit('canInterupt');
+                  
                     WVFX.setAttribute('visible', 'true');
                     sensor.setAttribute('material', 'color', 'black');
                 }
@@ -47,21 +47,16 @@ AFRAME.registerComponent('player-looking', {
         el.addEventListener('looking', this.eventHandlerFn);
 
 
-        //when player looks away
+        
         el.addEventListener('notLooking', function() {
             console.log('player Looks away');
 
             if (data.canWater) {
-                if (canInterupt) {
-                    limitedInteruption_el.emit('interupt');
-                }
-
-
-                window.isPlayerLooking = false;
-                //deactivate AAs calculation here
+                
+               
 
                 floweranim.setAttribute('animation-mixer', 'timeScale', '-1');
-                // flowerSync.emit('flower-reverse');
+                
                 WVFX.setAttribute('visible', 'false');
                 window.isReversing = true;
                 sensor = document.getElementById('sensor' + window.flowerIndex);
@@ -72,6 +67,15 @@ AFRAME.registerComponent('player-looking', {
                 }
             }
 
+        })
+
+        el.addEventListener('distracting',function(){
+         
+            isDistracted = true;
+            console.log('looking distracted');
+        })
+        el.addEventListener('notDistracting',function(){
+            isDistracted = false;
         })
     },
     remove: function() {

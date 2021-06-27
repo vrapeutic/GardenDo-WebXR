@@ -12,7 +12,7 @@ AFRAME.registerComponent("bird",{
   //    var ds = document.getElementById("Ds");// distractor element
       let ds =this.el
       let base = document.getElementById('base');
-      let cam = document.getElementById('cam');
+    //  let cam = document.getElementById('cam');
       let isToBase = false;
       let flowerIndex = 0;
       let isDestracting = false;
@@ -31,9 +31,11 @@ AFRAME.registerComponent("bird",{
       });
       ds.addEventListener('hitstart',function(){
         isDestracting = false;
-        cam.setAttribute('camera-head','canSee','true');
-        let sensor = document.getElementById('flower'+(flowerIndex+1));
-         sensor.emit('looking');
+      //  cam.setAttribute('camera-head','canSee','true');
+        let flower = document.getElementById('flower'+(flowerIndex+1));
+        let sensor = document.getElementById('sensor'+(flowerIndex+1));
+         sensor.emit('notDistracting');
+         flower.emit('notDistracting');
       })
       
       function getRndInteger(min, max) {
@@ -67,7 +69,7 @@ AFRAME.registerComponent("bird",{
              newpos=base.getAttribute("position");
              isToBase = false;
              console.log('to base');
-            cam.setAttribute('camera-head','canSee','true')
+           // cam.setAttribute('camera-head','canSee','true')
           }
           else if(!isDestracting)
           {
@@ -83,10 +85,12 @@ AFRAME.registerComponent("bird",{
             if(random == flowerIndex)
             {
                isDestracting = true;
-              cam.setAttribute('camera-head','canSee','false')
+              //cam.setAttribute('camera-head','canSee','false')
              //sensor = document.getElementById('flower'+flowerIndex);
-              let sensor = document.getElementById('flower'+(flowerIndex+1));
-              sensor.emit('notLooking');
+             let flower = document.getElementById('flower'+(flowerIndex+1));
+             let sensor = document.getElementById('sensor'+(flowerIndex+1));
+             sensor.emit('distracting');
+             flower.emit('distracting');
               console.log('is Distracting')
             }
           }

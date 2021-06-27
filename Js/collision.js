@@ -13,19 +13,20 @@ AFRAME.registerComponent('start-collision', {
         let data = this.data;
         let floweranim = document.getElementById(data.flower);
         let WVFX = document.getElementById('particle');
+        let isDistracted = false;
         
         // let flowerSync = document.getElementById("flower-sync");
 
         el.addEventListener("hitstart", function() {
 
-            if (data.canCollide) {
+            if (data.canCollide && !isDistracted) {
                 console.log("collided");
                 window.isBucketWatering = true;
                 window.isReversing = false;
-                if (window.isPlayerLooking) {
+                if (window.isPlayerLooking ) {
                     el.setAttribute('material', 'color', 'black');
                     floweranim.setAttribute('animation-mixer', 'timeScale', '1');
-                    // flowerSync.emit('flower-grow');
+                   
                    
                     WVFX.setAttribute('visible', 'true');
                     canInterupt = true;
@@ -56,6 +57,14 @@ AFRAME.registerComponent('start-collision', {
 
             }
 
+        })
+        el.addEventListener('distracting',function(){
+         
+            isDistracted = true;
+            console.log('collision distracted');
+        })
+        el.addEventListener('notDistracting',function(){
+            isDistracted = false;
         })
     }
 
