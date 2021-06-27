@@ -4,9 +4,7 @@ AFRAME.registerComponent('camera-head', {
     canSee: { type: 'boolean', default: true },
   },
 
-  update: function(oldData) {
-    console.log(oldData);
-  },
+  
 
   tick: function (time) {
     let el = this.el;
