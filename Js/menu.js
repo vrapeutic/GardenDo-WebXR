@@ -95,6 +95,7 @@ function start_game() {
     startCall();
   } else if ( IAM == 'standalone' ) {
     console.log('standalone');
+    window.open('gamev2.html',"_self");
   }
 
   gameDiv.style.visibility = 'visible';
