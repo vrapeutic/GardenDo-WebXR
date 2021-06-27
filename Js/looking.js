@@ -19,7 +19,7 @@ AFRAME.registerComponent('player-looking', {
         let limitedInteruption_el = document.getElementById("limited-interuption");
         let canInterupt = false;
 
-        document.querySelector('a-scene').enterVR();
+       // document.querySelector('a-scene').enterVR();
         //when player is looking
         this.eventHandlerFn = function(event) {
 
