@@ -31,7 +31,7 @@
   <script src="Js/levelManager.js"></script>
   <script src="Js/StatisticsCalculation.js"></script>
   <script src="Js/TimeCalculation.js" ></script>
-  
+  <script src="JS/waterVFX.js"></script>
  
   
   
@@ -187,11 +187,11 @@
        sphere-collider="radius:0.001">
    </a-gltf-model> 
    <a-box class="water-bucket" position="-0.22554 0.8 -4.386" scale = "0.8 0.8 0.8" visible = "false" aabb-collider="objects: .sensor;collideNonVisible:true"></a-box>
-<a-entity visible="false" position="-0.22554 0.60662 -4.386" id="particle" spe-particles="texture: https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2Fsnowflake.png?v=1610618333793; color: #0000FF, #00FFFF, #FFFFFF; opacity: 1, 1, 0; size: 0.5, 0.5, 0; velocity: 0 4 0; acceleration: 0 6 0; velocitySpread: 2 0 2; particleCount: 20" rotation="0 0 180">
+<a-entity visible="false" position="-0.22554 0.60662 -4.386" id="particles-holder"  >
 </a-entity>
 
 </a-box>
-      
+<a-entity scale="0.4 1 1" visible="true" vfx-position   id="particle" spe-particles="texture: https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2Fsnowflake.png?v=1610618333793; color: #0000FF, #00FFFF, #FFFFFF; opacity: 0.75, 0.75, 0; size: 0.5, 0.5, 0; velocity: 0 0.75 0; acceleration: 0 4 0; velocitySpread: 1 0 1; particleCount: 30" rotation="0 0 180"></a-entity> 
     
       
       <!-------- old hands
