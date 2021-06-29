@@ -1,3 +1,4 @@
+window.isAdded = false;
 AFRAME.registerComponent('vfx-position', {
     
     tick: (function () {
@@ -7,8 +8,12 @@ AFRAME.registerComponent('vfx-position', {
       
       el.setAttribute('position',vfx_position);
 
-
-      
+     if(!isAdded)
+     {
+      console.log('water vfx added')
+      isAdded = true;
+     }
+    
     
     })
   });
