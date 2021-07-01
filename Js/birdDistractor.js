@@ -12,18 +12,13 @@ AFRAME.registerComponent("bird",{
   //    var ds = document.getElementById("Ds");// distractor element
       let ds =this.el
       let base = document.getElementById('base');
-    //  let cam = document.getElementById('cam');
+      let cam = document.getElementById('cam');
       let isToBase = false;
       let flowerIndex = 0;
       let isDestracting = false;
-      let oldRandom = 0;
+      let oldRandom = 10;
       
      
-     // console.log(box + " this " + ds+document.getElementById("level").getAttribute("value"));
-  
-     // level 2
-
-   // console.log(document.getElementById("level").getAttribute("value"))
       
       ds.addEventListener('next',function(){
       flowerIndex ++;
@@ -31,11 +26,9 @@ AFRAME.registerComponent("bird",{
       });
       ds.addEventListener('hitstart',function(){
         isDestracting = false;
-      //  cam.setAttribute('camera-head','canSee','true');
-        let flower = document.getElementById('flower'+(flowerIndex+1));
-        let sensor = document.getElementById('sensor'+(flowerIndex+1));
-         sensor.emit('notDistracting');
-         flower.emit('notDistracting');
+        cam.setAttribute('camera-head','canSee','true');
+        let sensor = document.getElementById('flower'+(flowerIndex+1));
+         sensor.emit('looking');
       })
       
       function getRndInteger(min, max) {
@@ -43,7 +36,22 @@ AFRAME.registerComponent("bird",{
 }
       
     function getNewRandom(oldRandomNumber){
-      let randomNumber =getRndInteger(0,4);
+      let randomNumber =getRndInteger(0,100);
+       console.log("randomNumber"+randomNumber.toString());
+      if(randomNumber < 50)
+      {
+        
+        return flowerIndex;
+      }
+      else
+      {
+        console.log("not 0")
+         do{
+             randomNumber = getRndInteger(0,4)
+         }
+         while(randomNumber == flowerIndex)
+      }
+      /*
       if(oldRandomNumber == randomNumber)
         {
           console.log('same number');
@@ -55,7 +63,7 @@ AFRAME.registerComponent("bird",{
           
           console.log('not same');
           return randomNumber ;
-        }
+        }*/
       
     }  
      let startDsMovement= function cycle(index) 
@@ -69,7 +77,7 @@ AFRAME.registerComponent("bird",{
              newpos=base.getAttribute("position");
              isToBase = false;
              console.log('to base');
-           // cam.setAttribute('camera-head','canSee','true')
+            cam.setAttribute('camera-head','canSee','true')
           }
           else if(!isDestracting)
           {
@@ -85,16 +93,14 @@ AFRAME.registerComponent("bird",{
             if(random == flowerIndex)
             {
                isDestracting = true;
-              //cam.setAttribute('camera-head','canSee','false')
+              cam.setAttribute('camera-head','canSee','false')
              //sensor = document.getElementById('flower'+flowerIndex);
-             let flower = document.getElementById('flower'+(flowerIndex+1));
-             let sensor = document.getElementById('sensor'+(flowerIndex+1));
-             sensor.emit('distracting');
-             flower.emit('distracting');
+              let sensor = document.getElementById('flower'+(flowerIndex+1));
+              sensor.emit('notLooking');
               console.log('is Distracting')
             }
           }
-   // restor next target for distractor
+ 
     
           
     ds.setAttribute("animation","property:position; to:"+newpos.x+" "+newpos.y+" "+newpos.z+" dur:2000"); 
