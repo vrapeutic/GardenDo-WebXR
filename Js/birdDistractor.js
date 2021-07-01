@@ -38,9 +38,13 @@ AFRAME.registerComponent("bird",{
     function getNewRandom(oldRandomNumber){
       let randomNumber =getRndInteger(0,100);
        console.log("randomNumber"+randomNumber.toString());
-      if(randomNumber < 50)
+      if(randomNumber < 60)
       {
-        
+        randomNumber = flowerIndex
+        if(randomNumber == oldRandomNumber)
+        {
+          getNewRandom(oldRandomNumber)
+        }
         return flowerIndex;
       }
       else
@@ -48,8 +52,10 @@ AFRAME.registerComponent("bird",{
         console.log("not 0")
          do{
              randomNumber = getRndInteger(0,4)
+
          }
-         while(randomNumber == flowerIndex)
+         while(randomNumber == flowerIndex || randomNumber == oldRandomNumber)
+         return randomNumber;
       }
       /*
       if(oldRandomNumber == randomNumber)
