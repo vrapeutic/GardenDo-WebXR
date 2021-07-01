@@ -159,7 +159,7 @@
          <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"  aabb-collider="objects: .tap;" class = "hand"  collision-filter = "group: hands;
          collidesWith: red, blue;
          collisionForces: false" el-sync ></a-entity>
-      <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" aabb-collider="objects: .tap;" class = "hand" el-sync></a-entity>
+      <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"  el-sync></a-entity>
       
  
 
@@ -175,7 +175,9 @@
       <!-- grabbable etc. box -->
       
       <a-box  
-      dynamic-body="shape:cylinder" 
+      dynamic-body="shape:cylinder;
+      linearDamping:0.5
+      angularDamping:0.5" 
      bucket-sync-reader
       grabbable 
      
