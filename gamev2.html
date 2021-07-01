@@ -173,11 +173,13 @@
       <!-- grabbable etc. box -->
       
       <a-box  
-      dynamic-body="shape:cylinder" 
+      dynamic-body="shape:cylinder
+                  radiusTop: 0.9;
+                  radiusBottom: 0.9;" 
      bucket-sync-reader
       grabbable 
      
-      id="bucket"    color="blue"  position="0.23  0.57 -0.58"  rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="1.8" width="0.5"  material="visible: false"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
+      id="bucket"    color="blue"  position="0.23  0.57 -0.58"  rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="1.8" width="0.5"  material="visible: true"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
          <a-gltf-model      
   src="#bucket"
 
