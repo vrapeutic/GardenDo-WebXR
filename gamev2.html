@@ -138,12 +138,17 @@
 
     </a-assets>
     <!--  <a-entity light="intensity: 4; castShadow: true; angle: 120" position="-0.5 1.89562 10.20745" data-aframe-default-light="" aframe-injected=""></a-entity> -->
-      <!--- superhands---------------------------------------->
+      <!--- superhands----------------------------------------
       <a-entity 
  progressive-controls="objects: .water-bucket,#bucket"
        ></a-entity>
-      <!----------------------------------------------------------------------->
+      --------------------------------------------------------------------->
       
+      <a-entity progressive-control="objects: .water-bucket,#bucket,[grabbable], [hoverable]">
+        <a-entity id="rhand" class="right-controller" collision-filter="collisionForces: false"></a-entity>
+        <a-entity id="lhand" class="left-controller" collision-filter="collisionForces: false"></a-entity>
+</a-entity>
+
       <a-camera id="cam" camera-head>
        
         
@@ -155,11 +160,11 @@
      <a-gltf-model id="handlemdoel" src="#handle"  animation-mixer="timeScale = 0" position="1.251 0.269 0.496" handle></a-gltf-model>
       <a-entity level-manager></a-entity>
   
-       <!-- super hands controls -->
-         <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"  aabb-collider="objects: .tap;" class = "hand"  collision-filter="collisionForces: false" el-sync ></a-entity>
+       <!-- super hands controls --
+         <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"   class = "hand"  collision-filter="collisionForces: false" el-sync ></a-entity>
       <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc"  el-sync></a-entity>
       
- 
+       -->
 
         <!-- grabbable etc. box -->
      
