@@ -156,7 +156,9 @@
       <a-entity level-manager></a-entity>
   
        <!-- super hands controls -->
-         <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"  aabb-collider="objects: .tap;" class = "hand" el-sync ></a-entity>
+         <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"  aabb-collider="objects: .tap;" class = "hand"  collision-filter = "group: hands;
+         collidesWith: red, blue;
+         collisionForces: false">  el-sync ></a-entity>
       <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" aabb-collider="objects: .tap;" class = "hand" el-sync></a-entity>
       
  
@@ -173,7 +175,7 @@
       <!-- grabbable etc. box -->
       
       <a-box  
-      dynamic-body="shape:box" 
+      dynamic-body="shape:cylinder" 
      bucket-sync-reader
       grabbable 
      
