@@ -135,6 +135,16 @@
       <a-asset-itme id="snowflake"
         src="https://cdn.glitch.com/0e3e4c30-3420-486d-aea5-b38914072651%2Fsnowflake.png?v=1610618333793">
       </a-asset-itme>
+      <a-mixin id="controller"
+      physics-collider
+      static-body="shape: sphere; sphereRadius: 0.02"
+      super-hands="colliderEvent: collisions;
+                   colliderEventProperty: els;
+                   colliderEndEvent: collisions;
+                   colliderEndEventProperty: clearedEls"
+      collision-filter = "group: hands;
+                          collisionForces: false">
+</a-mixin>
 
     </a-assets>
     <!--  <a-entity light="intensity: 4; castShadow: true; angle: 120" position="-0.5 1.89562 10.20745" data-aframe-default-light="" aframe-injected=""></a-entity> -->
@@ -156,12 +166,12 @@
       <a-entity level-manager></a-entity>
   
        <!-- super hands controls -->
-         <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"  class = "hand"  collision-filter="collisionForces: false" el-sync ></a-entity>
-      <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" collision-filter="collisionForces: false"  el-sync></a-entity>
+         <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"  class = "hand"  mixin="controller" ></a-entity>
+      <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" class = "hand" mixin="controller"  ></a-entity>
       
  
 
-        <!-- grabbable etc. box -->
+      
      
      <a-cylinder static-body color="crimson" height="0.8" radius="0.13" position="0.14008 0 -0.58" material="" geometry=""></a-cylinder>
      
@@ -173,9 +183,7 @@
       <!-- grabbable etc. box -->
       
       <a-box  
-      dynamic-body="shape:cylinder;
-      linearDamping:0.5
-      angularDamping:0.5" 
+      dynamic-body="shape:cylinder;" 
       
      bucket-sync-reader
       grabbable 
