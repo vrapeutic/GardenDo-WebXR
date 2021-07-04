@@ -37,7 +37,7 @@
   
 </head>
 <body>
-  <a-scene physics="iterations: 80;friction: 0.1; restitution: 0.05">
+  <a-scene physics="iterations: 60;">
     <a-assets>
      
 
@@ -145,14 +145,16 @@
       collision-filter = "group: hands;
                           collisionForces: false">
 </a-mixin>
-
+<a-mixin id="cube" dynamic-body grabbable
+geometry="primitive: box; width: 0.15; height: 0.15; depth: 0.15">
+</a-mixin>
     </a-assets>
     <!--  <a-entity light="intensity: 4; castShadow: true; angle: 120" position="-0.5 1.89562 10.20745" data-aframe-default-light="" aframe-injected=""></a-entity> -->
-      <!--- superhands---------------------------------------->
+      <!--- superhands----------------------------------------
       <a-entity 
  progressive-controls="objects: .water-bucket,#bucket" collision-filter="collisionForces: false"
        ></a-entity>
-      <!----------------------------------------------------------------------->
+     ----------------------------------------------------------------------->
       
       <a-camera id="cam" camera-head>
        
@@ -166,8 +168,8 @@
       <a-entity level-manager></a-entity>
   
        <!-- super hands controls -->
-         <a-entity hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc"  class = "hand"  mixin="controller" ></a-entity>
-      <a-entity hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" class = "hand" mixin="controller"  ></a-entity>
+       <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" mixin="controller"></a-entity>
+       <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" mixin="controller"></a-entity>
       
  
 
@@ -175,18 +177,19 @@
      
      <a-cylinder static-body color="crimson" height="0.8" radius="0.13" position="0.14008 0 -0.58" material="" geometry=""></a-cylinder>
      
+    
       
       
-      
-  <a-plane position="1.6631 0.575 -0.03413" static-body rotation="-90 0 0" visible = "false" ></a-plane>
+  <a-plane position="1.6631 0.575 -0.03413"  static-body rotation="-90 0 0" visible = "false" ></a-plane>
      
       <!-- grabbable etc. box -->
       
       <a-box  
       dynamic-body="shape:cylinder;" 
-      
+      sleepy
      bucket-sync-reader
       grabbable 
+      
      
       id="bucket"    color="blue"  position="0.23  0.57 -0.58"  rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="1.8" width="0.5"  material="visible: false"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
          <a-gltf-model      
@@ -214,7 +217,7 @@
    </a-entity>
      -------------------------------------------------------------------------------------------------------------------------------->
 
-    <a-plane position="0 0 0" rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
+    <a-plane position="0 0 0"   rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
 
     <a-box id="sensor1" depth="0.12" width = "0.12" height = "1.2" position = "-0.19746 0.03255 -0.35915" aabb-collider="objects: .water-bucket;collideNonVisible:true" visible="false" start-collision="flower:flower1;canCollide:true"  class = "clickable" hoverable data-aabb-collider-dynamic></a-box>   
     <a-box id="sensor2" depth="0.12" width = "0.12" height = "1.2" position = "-0.37345 0.03255 -0.13064" aabb-collider="objects: .water-bucket;collideNonVisible:true" visible="false" start-collision="flower:flower2;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>      
