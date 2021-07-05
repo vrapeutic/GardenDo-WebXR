@@ -169,8 +169,8 @@ geometry="primitive: box; width: 0.15; height: 0.15; depth: 0.15">
       <a-entity level-manager></a-entity>
   
        <!-- super hands controls -->
-       <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" mixin="controller" class = "hand"></a-entity>
-       <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" mixin="controller" class = "hand"></a-entity>
+       <a-entity id="leftHand" hand-controls="hand: left; handModelStyle: lowPoly; color: #ffcccc" mixin="controller"  aabb-collider="objects: .bird;" class = "hand"></a-entity>
+       <a-entity id="rightHand" hand-controls="hand: right; handModelStyle: lowPoly; color: #ffcccc" mixin="controller"  aabb-collider="objects: .bird;" class = "hand"></a-entity>
       
  
 
@@ -235,8 +235,8 @@ geometry="primitive: box; width: 0.15; height: 0.15; depth: 0.15">
 
 
 
-    <a-gltf-model id="myDs" src="#bird" aabb-collider="objects: .hand" scale="0.015 0.015 0.015"  animation-mixer
-      position="-1.2 1 0.06" data-aabb-collider-dynamic  collision-filter="group: bird; collidesWith: default, hands, floor" visible="false"></a-gltf-model>
+    <a-gltf-model id="myDs" src="#bird" aabb-collider="objects: .hand" scale="0.015 0.015 0.015"  animation-mixer class="bird"
+      position="-1.2 1 0.06" data-aabb-collider-dynamic  collision-filter="group: bird; collidesWith: default, hand, floor" visible="false"></a-gltf-model>
     <!-----------bird targets-->
    <a-box scale="0.2 0.2 0.2" class="targets" position="-0.28 0.2 -0.35915" visible="false"></a-box>
     <a-box scale="0.2 0.2 0.2" class="targets" position="-0.46 0.2 -0.13064" visible="false"></a-box>
