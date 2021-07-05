@@ -26,9 +26,12 @@ AFRAME.registerComponent("bird",{
       });
       ds.addEventListener('hitstart',function(){
         isDestracting = false;
-        cam.setAttribute('camera-head','canSee','true');
-        let sensor = document.getElementById('flower'+(flowerIndex+1));
-         sensor.emit('looking');
+       
+        let flower = document.getElementById('flower'+(flowerIndex+1));
+        let sensor =document.getElementById('sensor'+(flowerIndex+1));
+
+        flower.emit('notDistracting');
+        sensor.emit('notDistracting');
       })
       
       function getRndInteger(min, max) {
@@ -99,11 +102,12 @@ AFRAME.registerComponent("bird",{
             if(random == flowerIndex)
             {
                isDestracting = true;
-              cam.setAttribute('camera-head','canSee','false')
+             // cam.setAttribute('camera-head','canSee','false')
              //sensor = document.getElementById('flower'+flowerIndex);
-              let sensor = document.getElementById('flower'+(flowerIndex+1));
-              sensor.emit('notLooking');
-              console.log('is Distracting')
+              let sensor = document.getElementById('sensor'+(flowerIndex+1));
+              let flower = document.getElementById('flower'+(flowerIndex+1));
+              sensor.emit('distracting');
+              flower.emit('distracting');
             }
           }
  
