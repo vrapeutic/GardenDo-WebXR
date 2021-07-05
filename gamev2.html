@@ -181,7 +181,7 @@ geometry="primitive: box; width: 0.15; height: 0.15; depth: 0.15">
     
       
       
-  <a-plane position="1.6631 0.575 -0.03413" collision-filter="group: floor; collidesWith: default, bucket" static-body rotation="-90 0 0" visible = "false" ></a-plane>
+  <a-plane position="1.6631 0.575 -0.03413" collision-filter="group: floor; collidesWith: default, body,bucket" static-body rotation="-90 0 0" visible = "false" ></a-plane>
      
       <!-- grabbable etc. box -->
       
@@ -195,7 +195,8 @@ geometry="primitive: box; width: 0.15; height: 0.15; depth: 0.15">
       id="bucket"    color="blue"  position="0.23  0.57 -0.58"  rotation="0 90 0" scale="0.09 0.09 0.09" depth="0.5" height="1.8" width="0.5"  material="visible: true"  quaternion="-0.000002240495865766382 -0.00036037312792394286 -9.841401552147854e-7 0.9999999350626081" >
          <a-gltf-model      
   src="#bucket"
-
+  static-body
+  collision-filter="group: body; collidesWith: default, hands, floor"
    position="0 0.8 0.4"   
                      scale="10 10 10"
       color="blue" 
@@ -219,7 +220,7 @@ geometry="primitive: box; width: 0.15; height: 0.15; depth: 0.15">
    </a-entity>
      -------------------------------------------------------------------------------------------------------------------------------->
 
-    <a-plane position="0 0 0" collision-filter="group: floor; collidesWith: default, bucket"   rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
+    <a-plane position="0 0 0" collision-filter="group: floor; collidesWith: default,body, bucket"   rotation="-90 0 0" width="4" height="4" color="#7BC8A4" static-body></a-plane>
 
     <a-box id="sensor1" depth="0.12" width = "0.12" height = "1.2" position = "-0.19746 0.03255 -0.35915" aabb-collider="objects: .water-bucket;collideNonVisible:true" visible="false" start-collision="flower:flower1;canCollide:true"  class = "clickable" hoverable data-aabb-collider-dynamic></a-box>   
     <a-box id="sensor2" depth="0.12" width = "0.12" height = "1.2" position = "-0.37345 0.03255 -0.13064" aabb-collider="objects: .water-bucket;collideNonVisible:true" visible="false" start-collision="flower:flower2;canCollide:false" class = "clickable" hoverable data-aabb-collider-dynamic></a-box>      
