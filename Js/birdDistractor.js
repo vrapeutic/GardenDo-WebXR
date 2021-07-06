@@ -109,6 +109,7 @@ AFRAME.registerComponent("bird",{
               let sensor = document.getElementById('sensor'+(flowerIndex+1));
               let flower = document.getElementById('flower'+(flowerIndex+1));
               sensor.emit('distracting');
+              flower.emit('notLooking');
               flower.emit('distracting');
             }
           }
