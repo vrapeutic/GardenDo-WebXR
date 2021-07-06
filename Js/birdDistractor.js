@@ -31,7 +31,9 @@ AFRAME.registerComponent("bird",{
         let sensor =document.getElementById('sensor'+(flowerIndex+1));
 
         flower.emit('notDistracting');
+        flower.emit('notLooking');
         sensor.emit('notDistracting');
+        
       })
       
       function getRndInteger(min, max) {

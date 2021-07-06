@@ -61,6 +61,7 @@ AFRAME.registerComponent('start-collision', {
         el.addEventListener('distracting',function(){
          
             isDistracted = true;
+            window.isBucketWatering = false;
             console.log('collision distracted');
         })
         el.addEventListener('notDistracting',function(){
