@@ -31,7 +31,7 @@ AFRAME.registerComponent("bird",{
         let sensor =document.getElementById('sensor'+(flowerIndex+1));
 
         flower.emit('notDistracting');
-        flower.emit('notLooking');
+        
         sensor.emit('notDistracting');
         
       })
@@ -43,7 +43,7 @@ AFRAME.registerComponent("bird",{
     function getNewRandom(oldRandomNumber){
       let randomNumber =getRndInteger(0,100);
        console.log("randomNumber"+randomNumber.toString());
-      if(randomNumber < 60)
+      if(randomNumber < 40)
       {
         randomNumber = flowerIndex
         if(randomNumber == oldRandomNumber)
